@@ -41,34 +41,60 @@ const ICONS: Record<string, React.ReactNode> = {
 export function About() {
   return (
     <section id="about" className={styles.section}>
+      {/* Large decorative number */}
+      <div className={styles.bigNumber} aria-hidden="true">
+        <span>5+</span>
+      </div>
+
       <div className={styles.container}>
+        {/* Top: Heading spans full width asymmetrically */}
+        <RevealOnScroll>
+          <div className={styles.headingRow}>
+            <SectionHeading topText="About" bottomText="The Group" />
+            <div className={styles.headingAccent}>
+              <span className={styles.accentLabel}>Leading Companies</span>
+              <span className={styles.accentNumber}>Since &apos;97</span>
+            </div>
+          </div>
+        </RevealOnScroll>
+
+        {/* Main content — text offset left, cards break right */}
         <div className={styles.grid}>
           <div className={styles.textCol}>
-            <RevealOnScroll>
-              <SectionHeading topText="About" bottomText="The Group" />
-            </RevealOnScroll>
-
-            {siteContent.about.paragraphs.map((p, i) => (
+            {siteContent.about.paragraphs.slice(0, 2).map((p, i) => (
               <RevealOnScroll key={i} delay={0.1 + i * 0.08}>
                 <p className={styles.paragraph}>{p}</p>
+              </RevealOnScroll>
+            ))}
+
+            <RevealOnScroll delay={0.25}>
+              <div className={styles.dividerRow}>
+                <span className={styles.dividerLine} />
+                <span className={styles.dividerText}>Our Sectors</span>
+              </div>
+            </RevealOnScroll>
+
+            {siteContent.about.paragraphs.slice(2).map((p, i) => (
+              <RevealOnScroll key={i + 2} delay={0.3 + i * 0.08}>
+                <p className={`${styles.paragraph} ${styles.paragraphSmall}`}>{p}</p>
               </RevealOnScroll>
             ))}
           </div>
 
           <div className={styles.cardsCol}>
-            <div className={styles.cardsGrid}>
-              {siteContent.about.activities.map((activity, i) => (
-                <RevealOnScroll key={activity.icon} delay={0.2 + i * 0.1}>
-                  <div className={styles.card}>
-                    <div className={styles.cardIcon}>
-                      {ICONS[activity.icon]}
-                    </div>
-                    <h3 className={styles.cardTitle}>{activity.title}</h3>
-                    <p className={styles.cardCompany}>{activity.company}</p>
+            {siteContent.about.activities.map((activity, i) => (
+              <RevealOnScroll key={activity.icon} delay={0.15 + i * 0.12} direction={i % 2 === 0 ? 'right' : 'up'}>
+                <div className={`${styles.card} ${i === 0 ? styles.cardFeatured : ''}`}>
+                  <div className={styles.cardNumber}>0{i + 1}</div>
+                  <div className={styles.cardIcon}>
+                    {ICONS[activity.icon]}
                   </div>
-                </RevealOnScroll>
-              ))}
-            </div>
+                  <h3 className={styles.cardTitle}>{activity.title}</h3>
+                  <p className={styles.cardCompany}>{activity.company}</p>
+                  <div className={styles.cardEdge} />
+                </div>
+              </RevealOnScroll>
+            ))}
           </div>
         </div>
       </div>

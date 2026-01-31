@@ -1,106 +1,274 @@
 .section {
   padding: var(--section-py) 0;
   background: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Large decorative background number ── */
+.bigNumber {
+  position: absolute;
+  top: -40px;
+  right: -30px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.bigNumber span {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(200px, 28vw, 420px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-pearl);
+  opacity: 0.5;
 }
 
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-px);
+  position: relative;
 }
 
+/* ── Heading row ── */
+.headingRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--color-pearl);
+}
+
+.headingAccent {
+  text-align: right;
+  padding-bottom: 12px;
+}
+
+.accentLabel {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-ash);
+  margin-bottom: 4px;
+}
+
+.accentNumber {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-crimson);
+}
+
+/* ── Two-column grid ── */
 .grid {
   display: grid;
-  grid-template-columns: 55fr 45fr;
-  gap: 64px;
+  grid-template-columns: 50fr 50fr;
+  gap: 80px;
   align-items: start;
 }
 
 .textCol {
-  max-width: 560px;
+  max-width: 520px;
+  padding-top: 8px;
 }
 
 .paragraph {
   font-family: var(--font-body);
-  font-size: 16.5px;
-  line-height: 1.85;
+  font-size: 17px;
+  line-height: 1.9;
   color: var(--color-slate);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-.paragraph:last-child {
-  margin-bottom: 0;
+.paragraphSmall {
+  font-size: 15px;
+  color: var(--color-ash);
 }
 
-/* Activity cards */
+/* ── Section divider ── */
+.dividerRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 36px 0;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--color-crimson), var(--color-pearl));
+}
+
+.dividerText {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-crimson);
+  flex-shrink: 0;
+}
+
+/* ── Activity cards — staggered grid ── */
 .cardsCol {
-  padding-top: 16px;
-}
-
-.cardsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  padding-top: 0;
 }
 
 .card {
-  padding: 28px 24px;
+  position: relative;
+  padding: 32px 24px 28px;
+  background: var(--color-white);
   border: 1px solid var(--color-pearl);
   border-radius: 4px;
+  overflow: hidden;
   transition:
     border-color var(--duration-normal) var(--ease-out-expo),
-    box-shadow var(--duration-normal) var(--ease-out-expo),
+    box-shadow var(--duration-slow) var(--ease-out-expo),
     transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.card:nth-child(2) {
+  transform: translateY(32px);
+}
+
+.card:nth-child(4) {
+  transform: translateY(32px);
 }
 
 .card:hover {
   border-color: var(--color-crimson);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
 }
 
+.card:nth-child(2):hover,
+.card:nth-child(4):hover {
+  transform: translateY(28px);
+}
+
+.cardFeatured {
+  background: var(--color-charcoal);
+  border-color: var(--color-graphite);
+}
+
+.cardFeatured .cardTitle {
+  color: var(--color-white);
+}
+
+.cardFeatured .cardCompany {
+  color: var(--color-silver);
+}
+
+.cardFeatured .cardNumber {
+  color: rgba(200, 16, 46, 0.3);
+}
+
+.cardNumber {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-pearl);
+  letter-spacing: 0.1em;
+}
+
 .cardIcon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   color: var(--color-crimson);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   transition: transform var(--duration-normal) var(--ease-out-expo);
 }
 
 .card:hover .cardIcon {
-  transform: scale(1.08);
+  transform: scale(1.1) rotate(-5deg);
 }
 
 .cardTitle {
   font-family: var(--font-ui);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--color-black);
   margin-bottom: 6px;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
 }
 
 .cardCompany {
   font-family: var(--font-ui);
   font-weight: 400;
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--color-ash);
   line-height: 1.5;
 }
 
+.cardEdge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-crimson);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.card:hover .cardEdge {
+  transform: scaleX(1);
+}
+
+/* ── Responsive ── */
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 56px;
   }
 
   .textCol {
     max-width: 100%;
   }
+
+  .bigNumber {
+    top: -20px;
+    right: -20px;
+  }
+
+  .headingRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .headingAccent {
+    text-align: left;
+    padding-bottom: 0;
+  }
+
+  .card:nth-child(2),
+  .card:nth-child(4) {
+    transform: none;
+  }
+
+  .card:nth-child(2):hover,
+  .card:nth-child(4):hover {
+    transform: translateY(-4px);
+  }
 }
 
 @media (max-width: 480px) {
-  .cardsGrid {
+  .cardsCol {
     grid-template-columns: 1fr;
   }
 }

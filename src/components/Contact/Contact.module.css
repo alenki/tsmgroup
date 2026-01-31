@@ -1,22 +1,51 @@
 .section {
   padding: var(--section-py) 0;
   background: var(--color-ivory);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Decorative background ── */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border: 1px solid var(--color-pearl);
+  border-radius: 50%;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.section::after {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgba(200, 16, 46, 0.06);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-px);
+  position: relative;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 42fr 58fr;
-  gap: 72px;
+  grid-template-columns: 38fr 62fr;
+  gap: 80px;
   align-items: start;
 }
 
-/* Info column */
+/* ── Info column ── */
 .infoCol {
   padding-top: 8px;
 }
@@ -24,7 +53,7 @@
 .infoList {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
   margin-bottom: 48px;
 }
 
@@ -35,20 +64,20 @@
 }
 
 .infoIcon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
   color: var(--color-crimson);
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .infoLabel {
   display: block;
   font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   color: var(--color-ash);
   margin-bottom: 4px;
 }
@@ -65,10 +94,18 @@
 .decorGeometry {
   width: 100px;
   height: 100px;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
-/* Form column */
+/* ── Form column ── */
+.formCol {
+  background: var(--color-white);
+  padding: 48px 44px;
+  border-radius: 6px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -88,10 +125,10 @@
 
 .label {
   font-family: var(--font-ui);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   color: var(--color-slate);
   margin-bottom: 10px;
 }
@@ -131,20 +168,30 @@
 .submitBtn {
   align-self: flex-start;
   font-family: var(--font-ui);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   color: var(--color-white);
   background: var(--color-crimson);
-  padding: 16px 48px;
+  padding: 18px 52px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
   transition:
     background-color var(--duration-fast),
     box-shadow var(--duration-normal) var(--ease-out-expo),
     transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.submitBtn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.1) 100%);
+  pointer-events: none;
 }
 
 .submitBtn:hover:not(:disabled) {
@@ -176,5 +223,9 @@
 @media (max-width: 480px) {
   .formGrid {
     grid-template-columns: 1fr;
+  }
+
+  .formCol {
+    padding: 32px 24px;
   }
 }
