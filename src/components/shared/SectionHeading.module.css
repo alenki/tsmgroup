@@ -1,0 +1,44 @@
+.heading {
+  margin-bottom: 48px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.centered .rule {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.top {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--color-slate);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.top.light {
+  color: var(--color-silver);
+}
+
+.bottom {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 56px);
+  color: var(--color-crimson);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.rule {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--color-gold);
+  margin-top: 20px;
+}

@@ -1,0 +1,140 @@
+.section {
+  padding: var(--section-py) 0;
+  background: var(--color-ivory);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 38fr 62fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* Portrait column */
+.portraitCol {
+  position: sticky;
+  top: calc(var(--nav-height) + 32px);
+}
+
+.portraitFrame {
+  position: relative;
+}
+
+.portraitAccent {
+  position: absolute;
+  left: -12px;
+  top: 0;
+  bottom: 80px;
+  width: 3px;
+  background: var(--color-crimson);
+  border-radius: 2px;
+}
+
+.portraitImage {
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--color-pearl);
+  aspect-ratio: 3 / 4;
+}
+
+.portraitSvg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portraitLabel {
+  margin-top: 20px;
+  padding-left: 4px;
+}
+
+.portraitName {
+  display: block;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-black);
+  letter-spacing: 0.02em;
+}
+
+.portraitTitle {
+  display: block;
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--color-ash);
+  margin-top: 2px;
+}
+
+/* Message column */
+.messageCol {
+  padding-top: 8px;
+}
+
+.messageBody {
+  position: relative;
+}
+
+.quoteDecor {
+  position: absolute;
+  top: -48px;
+  left: -20px;
+  font-family: var(--font-display);
+  font-size: 200px;
+  font-weight: 900;
+  color: var(--color-crimson);
+  opacity: 0.06;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.paragraph {
+  font-family: var(--font-body);
+  font-size: 16.5px;
+  line-height: 1.9;
+  color: var(--color-slate);
+  margin-bottom: 20px;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.opening {
+  font-style: italic;
+  font-size: 17.5px;
+  color: var(--color-graphite);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .portraitCol {
+    position: relative;
+    top: auto;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .quoteDecor {
+    font-size: 140px;
+    top: -32px;
+    left: -12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portraitCol {
+    max-width: 260px;
+  }
+}

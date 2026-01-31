@@ -1,0 +1,231 @@
+.section {
+  padding: var(--section-py) 0;
+  background: var(--color-charcoal);
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 40% 60% at 80% 20%, rgba(200, 16, 46, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-px);
+  position: relative;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Card */
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.cardVisual {
+  position: absolute;
+  inset: 0;
+  transition: transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.card:hover .cardVisual {
+  transform: scale(1.05);
+}
+
+.cardBg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.9) 0%,
+    rgba(10, 10, 10, 0.4) 45%,
+    rgba(10, 10, 10, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+.cardLogo {
+  color: var(--color-white);
+  height: 28px;
+  width: auto;
+  margin-bottom: 8px;
+}
+
+.cardLogo svg {
+  height: 100%;
+  width: auto;
+}
+
+.cardTagline {
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--color-silver);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cardCta {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-crimson-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity var(--duration-normal) var(--ease-out-expo),
+    transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.card:hover .cardCta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cardBorder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--color-crimson));
+  z-index: 2;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.card:hover .cardBorder {
+  transform: scaleX(1);
+}
+
+/* Modal overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 24px;
+}
+
+.modal {
+  position: relative;
+  background: var(--color-white);
+  border-radius: 8px;
+  max-width: 520px;
+  width: 100%;
+  padding: 48px 40px;
+  overflow: hidden;
+}
+
+.modalClose {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ash);
+  transition: color var(--duration-fast);
+  border-radius: 4px;
+}
+
+.modalClose:hover {
+  color: var(--color-black);
+}
+
+.modalClose svg {
+  width: 20px;
+  height: 20px;
+}
+
+.modalAccent {
+  width: 48px;
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: 28px;
+}
+
+.modalName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--color-black);
+  margin-bottom: 6px;
+}
+
+.modalTagline {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ash);
+  margin-bottom: 24px;
+}
+
+.modalDesc {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-slate);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .modal {
+    padding: 36px 28px;
+  }
+}

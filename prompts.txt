@@ -1,0 +1,7 @@
+
+
+Let us start planning this landing page for the TSM Group based in KSA. This is a rework of their current website:http://tsmgroups.com/. 
+  The same information and same functions and pages, but done much better, professional and modern. Use playwright to analyze their website fully. I     
+  want the same color pallete in general (maybe change a bit what you think is best), same information, but a very nice website that is according to     
+  their level. Use the frontend-design skill and the frontend aesthetics idea in @README.md to reach your full potential in web design.    
+
