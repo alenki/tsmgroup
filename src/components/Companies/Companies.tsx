@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { RevealOnScroll } from '../shared/RevealOnScroll';
 import { SectionHeading } from '../shared/SectionHeading';
@@ -8,6 +8,13 @@ import styles from './Companies.module.css';
 
 export function Companies() {
   const [activeCompany, setActiveCompany] = useState<Company | null>(null);
+
+  useEffect(() => {
+    if (activeCompany) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [activeCompany]);
 
   return (
     <section id="companies" className={styles.section}>
