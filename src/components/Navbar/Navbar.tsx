@@ -59,6 +59,16 @@ export function Navbar() {
     setClosing(true);
   };
 
+  const toggledByTouch = useRef(false);
+
+  const toggleMobile = useCallback(() => {
+    if (mobileOpen) {
+      closeMobile();
+    } else {
+      setMobileOpen(true);
+    }
+  }, [mobileOpen, closing]);
+
   const handleClick = (id: string) => {
     closeMobile();
     const el = document.getElementById(id);
@@ -95,8 +105,18 @@ export function Navbar() {
 
         <button
           className={`${styles.hamburger} ${mobileOpen && !closing ? styles.hamburgerOpen : ''}`}
-          onPointerDown={() => lenis?.stop()}
-          onClick={() => mobileOpen ? closeMobile() : setMobileOpen(true)}
+          onTouchEnd={(e) => {
+            e.preventDefault();
+            toggledByTouch.current = true;
+            toggleMobile();
+          }}
+          onClick={() => {
+            if (toggledByTouch.current) {
+              toggledByTouch.current = false;
+              return;
+            }
+            toggleMobile();
+          }}
           aria-label="Toggle menu"
         >
           <span />
