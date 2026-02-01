@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLenis } from '../../context/LenisContext';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import type { SectionId } from '../../hooks/useScrollSpy';
@@ -17,6 +17,20 @@ export function Navbar() {
   const { activeSection, scrolled } = useScrollSpy();
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      lenis?.stop();
+      document.body.style.overflow = 'hidden';
+    } else {
+      lenis?.start();
+      document.body.style.overflow = '';
+    }
+    return () => {
+      lenis?.start();
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen, lenis]);
+
   const handleClick = (id: string) => {
     setMobileOpen(false);
     const el = document.getElementById(id);
@@ -26,7 +40,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
+    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${mobileOpen ? styles.mobileOpen : ''}`}>
       <div className={styles.container}>
         <button
           className={styles.logo}
