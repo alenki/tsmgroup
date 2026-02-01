@@ -15,16 +15,26 @@
   background: var(--color-white);
 }
 
-/* ── Warm atmospheric background ── */
+/* ── Clean white background ── */
 .bgBase {
   position: absolute;
   inset: -30px;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(200, 16, 46, 0.035) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 50% at 75% 25%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
-    linear-gradient(160deg, #FEFEFE 0%, #F8F5F1 35%, #FAF7F3 60%, #FEFEFE 100%);
+  background: #fff;
   will-change: transform;
   transition: transform 0.15s ease-out;
+}
+
+/* ── Background element image — left side ── */
+.bgElement {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 90%;
+  width: auto;
+  pointer-events: none;
+  opacity: 0.09;
+  z-index: 1;
 }
 
 .bgPattern {
@@ -161,7 +171,7 @@
   z-index: 2;
   width: 100%;
   padding: 0 var(--container-px);
-  padding-bottom: clamp(60px, 8vh, 100px);
+  padding-bottom: clamp(36px, 4vh, 56px);
 }
 
 /* ── Top-right circular text element ── */

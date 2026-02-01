@@ -76,6 +76,12 @@ export function Hero() {
       >
         <GeometricPattern />
       </div>
+      <img
+        src="/bg_element.png"
+        alt=""
+        className={styles.bgElement}
+        aria-hidden="true"
+      />
       <div className={styles.bgVignette} />
       <div className={styles.bgSpotlight} />
 
@@ -87,28 +93,6 @@ export function Hero() {
         transition={{ duration: 2, delay: 0.5, ease }}
       />
 
-      {/* Floating geometric accents with parallax */}
-      <motion.div
-        className={styles.floatingRing}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2.5, delay: 1, ease }}
-        style={{
-          transform: `translate(${mouse.x * 15}px, ${mouse.y * 15}px)`,
-        }}
-      />
-      <motion.div
-        className={styles.floatingLine}
-        initial={{ scaleY: 0 }}
-        animate={{ scaleY: 1 }}
-        transition={{ duration: 1.8, delay: 0.6, ease }}
-      />
-      <motion.div
-        className={styles.floatingDot}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2.2 }}
-      />
 
       {/* Horizontal accent line */}
       <motion.div
@@ -129,18 +113,6 @@ export function Hero() {
         1997
       </motion.div>
 
-      {/* Right side — circular text element (absolutely positioned) */}
-      <motion.div
-        className={styles.contentRight}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, delay: 1.2, ease }}
-        style={{
-          transform: `translate(${mouse.x * -10}px, ${mouse.y * -10}px)`,
-        }}
-      >
-        <CircularText />
-      </motion.div>
 
       {/* Main content — bottom-anchored */}
       <div className={styles.container}>
@@ -212,15 +184,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Brand mark bottom-left */}
-      <motion.div
-        className={styles.brandCorner}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.8 }}
-      >
-        <img src="/logo.png" alt="TSM Group" className={styles.logoImg} />
-      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
