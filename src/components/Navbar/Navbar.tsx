@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useLenis } from '../../context/LenisContext';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import type { SectionId } from '../../hooks/useScrollSpy';
@@ -16,12 +16,14 @@ export function Navbar() {
   const lenis = useLenis();
   const { activeSection, scrolled } = useScrollSpy();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (mobileOpen) {
+    if (mobileOpen && !closing) {
       lenis?.stop();
       document.body.style.overflow = 'hidden';
-    } else {
+    } else if (!mobileOpen && !closing) {
       lenis?.start();
       document.body.style.overflow = '';
     }
@@ -29,12 +31,36 @@ export function Navbar() {
       lenis?.start();
       document.body.style.overflow = '';
     };
-  }, [mobileOpen, lenis]);
+  }, [mobileOpen, closing, lenis]);
 
-  const handleClick = (id: string) => {
+  const finishClose = useCallback(() => {
     setMobileOpen(false);
+    setClosing(false);
     lenis?.start();
     document.body.style.overflow = '';
+  }, [lenis]);
+
+  useEffect(() => {
+    if (!closing) return;
+    const el = menuRef.current;
+    if (!el) return;
+
+    const onEnd = (e: TransitionEvent) => {
+      if (e.target === el && e.propertyName === 'clip-path') {
+        finishClose();
+      }
+    };
+    el.addEventListener('transitionend', onEnd);
+    return () => el.removeEventListener('transitionend', onEnd);
+  }, [closing, finishClose]);
+
+  const closeMobile = () => {
+    if (!mobileOpen || closing) return;
+    setClosing(true);
+  };
+
+  const handleClick = (id: string) => {
+    closeMobile();
     const el = document.getElementById(id);
     if (el) {
       lenis ? lenis.scrollTo(el) : el.scrollIntoView({ behavior: 'smooth' });
@@ -42,7 +68,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${mobileOpen ? styles.mobileOpen : ''}`}>
+    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${mobileOpen ? styles.mobileOpen : ''} ${closing ? styles.mobileClosing : ''}`}>
       <div className={styles.container}>
         <button
           className={styles.logo}
@@ -68,8 +94,8 @@ export function Navbar() {
         </div>
 
         <button
-          className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerOpen : ''}`}
-          onClick={() => setMobileOpen(!mobileOpen)}
+          className={`${styles.hamburger} ${mobileOpen && !closing ? styles.hamburgerOpen : ''}`}
+          onClick={() => mobileOpen ? closeMobile() : setMobileOpen(true)}
           aria-label="Toggle menu"
         >
           <span />
@@ -78,13 +104,13 @@ export function Navbar() {
         </button>
       </div>
 
-      <div className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ''}`}>
+      <div ref={menuRef} className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ''}`}>
         <div className={styles.mobileMenuInner}>
           {NAV_ITEMS.map((item, i) => (
             <button
               key={item.id}
               className={styles.mobileLink}
-              style={{ transitionDelay: mobileOpen ? `${i * 0.06}s` : '0s' }}
+              style={{ transitionDelay: mobileOpen && !closing ? `${i * 0.06}s` : closing ? `${(NAV_ITEMS.length - 1 - i) * 0.04}s` : '0s' }}
               onClick={() => handleClick(item.id)}
             >
               {item.label}

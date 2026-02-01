@@ -202,6 +202,16 @@
   pointer-events: auto;
 }
 
+.mobileClosing .mobileMenu {
+  clip-path: inset(0 0 100% 0);
+  pointer-events: none;
+}
+
+.mobileClosing .mobileLink {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 .mobileMenuInner {
   display: flex;
   flex-direction: column;
