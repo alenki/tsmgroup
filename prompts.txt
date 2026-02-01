@@ -12,3 +12,7 @@ References:
 1. https://dsgngroup.it/
 2. https://tref.digitaldesignnyc.co/
 3. https://chromia.com/
+
+
+
+Let us start designing a new hero section on the main page. I want something professional, creative and refined, that looks great along with the style of the rest of the website. I will send you a reference for the inspiration for the creativity, but you are to keep the websites style in mind. Also keep in mind the frontend-aesthetics idea in @README.md and use the frontend-design skill. Think harder about this, make the best you can think of, do the maximum of what you are capable of in creative and professional design.

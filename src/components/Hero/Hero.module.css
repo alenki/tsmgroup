@@ -1,159 +1,211 @@
+/* ═══════════════════════════════════════════
+   Hero — "Ivory Prestige"
+   Light cinematic hero with bottom-anchored
+   editorial typography & refined geometry
+   ═══════════════════════════════════════════ */
+
 .hero {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 640px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
   overflow: hidden;
   background: var(--color-white);
 }
 
-/* ── Background layers ── */
+/* ── Warm atmospheric background ── */
 .bgBase {
   position: absolute;
-  inset: -20px;
+  inset: -30px;
   background:
-    radial-gradient(ellipse 60% 50% at 15% 50%, rgba(200, 16, 46, 0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 60% at 80% 20%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
-    linear-gradient(155deg, #FEFEFE 0%, #F8F6F3 30%, #FAF8F5 60%, #FEFEFE 100%);
+    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(200, 16, 46, 0.035) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 75% 25%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
+    linear-gradient(160deg, #FEFEFE 0%, #F8F5F1 35%, #FAF7F3 60%, #FEFEFE 100%);
   will-change: transform;
   transition: transform 0.15s ease-out;
 }
 
 .bgPattern {
   position: absolute;
-  inset: -20px;
+  inset: -30px;
   will-change: transform;
   transition: transform 0.15s ease-out;
 }
 
+/* Soft vignette — gentle darkening at edges for depth */
 .bgVignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 40%, rgba(245, 243, 240, 0.5) 100%);
+  background:
+    radial-gradient(ellipse 65% 60% at 50% 50%, transparent 30%, rgba(222, 219, 214, 0.35) 100%);
+  pointer-events: none;
 }
 
+/* Crimson ambient glow — subtle wash of warmth near the bottom-left text area */
 .bgSpotlight {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 35% 50% at 65% 40%,
-    rgba(200, 16, 46, 0.015) 0%,
-    transparent 70%
-  );
+  background:
+    radial-gradient(
+      ellipse 50% 40% at 25% 75%,
+      rgba(200, 16, 46, 0.025) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 30% 35% at 80% 30%,
+      rgba(201, 168, 76, 0.02) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
 }
 
 /* ── Floating geometric accents ── */
 .floatingRing {
   position: absolute;
-  right: 12%;
-  top: 18%;
-  width: 420px;
-  height: 420px;
-  border: 1px solid rgba(200, 16, 46, 0.06);
+  right: 8%;
+  top: 12%;
+  width: 480px;
+  height: 480px;
+  border: 1px solid rgba(200, 16, 46, 0.05);
   border-radius: 50%;
   pointer-events: none;
-  animation: ringPulse 8s ease-in-out infinite;
+  animation: ringPulse 10s ease-in-out infinite;
   will-change: transform;
   transition: transform 0.2s ease-out;
+}
+
+.floatingRing::before {
+  content: '';
+  position: absolute;
+  inset: 40px;
+  border: 1px solid rgba(201, 168, 76, 0.05);
+  border-radius: 50%;
 }
 
 .floatingRing::after {
   content: '';
   position: absolute;
-  inset: 50px;
-  border: 1px solid rgba(201, 168, 76, 0.06);
+  inset: 90px;
+  border: 1px solid rgba(200, 16, 46, 0.04);
   border-radius: 50%;
 }
 
 .floatingLine {
   position: absolute;
-  right: 28%;
-  top: 8%;
+  right: 24%;
+  top: 5%;
   width: 1px;
-  height: 240px;
-  background: linear-gradient(to bottom, transparent, rgba(200, 16, 46, 0.1), transparent);
+  height: 280px;
+  background: linear-gradient(to bottom, transparent, rgba(200, 16, 46, 0.08), transparent);
   transform-origin: top;
   pointer-events: none;
 }
 
 .floatingDot {
   position: absolute;
-  right: 28%;
-  top: 8%;
-  width: 6px;
-  height: 6px;
+  right: 24%;
+  top: 5%;
+  width: 5px;
+  height: 5px;
   background: var(--color-crimson);
   border-radius: 50%;
   pointer-events: none;
-  box-shadow: 0 0 20px rgba(200, 16, 46, 0.25);
+  box-shadow: 0 0 20px rgba(200, 16, 46, 0.2);
 }
 
-/* Horizontal accent line across the hero */
+/* Horizontal accent line — low across the hero */
 .horizLine {
   position: absolute;
-  bottom: 30%;
+  bottom: 32%;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(200, 16, 46, 0.05) 20%, rgba(200, 16, 46, 0.05) 80%, transparent);
+  background: linear-gradient(
+    to right,
+    transparent 5%,
+    rgba(200, 16, 46, 0.04) 25%,
+    rgba(201, 168, 76, 0.04) 75%,
+    transparent 95%
+  );
   transform-origin: left;
+  pointer-events: none;
+}
+
+/* Vertical accent — left edge architectural line */
+.verticalAccent {
+  position: absolute;
+  left: var(--container-px);
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(200, 16, 46, 0.05) 30%,
+    rgba(200, 16, 46, 0.05) 70%,
+    transparent
+  );
   pointer-events: none;
 }
 
 @keyframes ringPulse {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.04); opacity: 0.7; }
+  50% { transform: scale(1.03); opacity: 0.6; }
 }
 
-/* ── Container ── */
+/* ── Main content container — pushed to bottom ── */
 .container {
   position: relative;
   z-index: 2;
   width: 100%;
-  margin: 0 auto;
   padding: 0 var(--container-px);
-  padding-top: calc(var(--nav-height) + 20px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding-bottom: clamp(60px, 8vh, 100px);
 }
 
-.contentLeft {
-  max-width: 720px;
-  perspective: 800px;
+/* ── Top-right circular text element ── */
+.contentRight {
+  position: absolute;
+  top: calc(var(--nav-height) + 40px);
+  right: calc(var(--container-px) + 20px);
+  z-index: 3;
+  will-change: transform;
+  transition: transform 0.2s ease-out;
 }
 
-/* ── Established badge ── */
+/* ── Established badge — sits above the tagline ── */
 .established {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .estLine {
-  width: 48px;
+  width: 56px;
   height: 1px;
   background: var(--color-gold);
 }
 
 .estText {
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.35em;
   color: var(--color-gold);
 }
 
-/* ── Tagline ── */
+/* ── Tagline — massive, editorial, bottom-anchored ── */
 .tagline {
   font-family: var(--font-display);
-  font-size: clamp(42px, 6.5vw, 96px);
-  line-height: 1.05;
+  font-size: clamp(48px, 7.5vw, 110px);
+  line-height: 1.0;
   color: var(--color-black);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   perspective: 600px;
+  max-width: 90%;
 }
 
 .taglineLight {
@@ -169,42 +221,90 @@
   color: var(--color-crimson);
 }
 
-/* ── Red rule ── */
-.rule {
-  display: block;
-  width: 72px;
-  height: 3px;
-  background: var(--color-crimson);
-  margin-top: 40px;
-  transform-origin: left;
-  box-shadow: 0 0 20px rgba(200, 16, 46, 0.15);
+/* ── Bottom bar: info + CTA inline ── */
+.bottomBar {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 60px);
+  margin-top: clamp(28px, 4vh, 48px);
 }
 
-/* ── Subtext ── */
-.subtext {
-  margin-top: 20px;
+.bottomMeta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.metaDivider {
+  width: 1px;
+  height: 14px;
+  background: rgba(201, 168, 76, 0.4);
+}
+
+.metaText {
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.25em;
   color: var(--color-ash);
 }
 
-/* ── Right side — Circular Text ── */
-.contentRight {
-  display: flex;
+.ctaButton {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  will-change: transform;
-  transition: transform 0.2s ease-out;
+  gap: 12px;
+  padding: 14px 32px;
+  border: 1px solid rgba(200, 16, 46, 0.2);
+  background: transparent;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-crimson);
+  transition:
+    background-color var(--duration-normal) var(--ease-out-expo),
+    border-color var(--duration-normal) var(--ease-out-expo),
+    color var(--duration-normal) var(--ease-out-expo);
+}
+
+.ctaButton:hover {
+  background: rgba(200, 16, 46, 0.04);
+  border-color: var(--color-crimson);
+  color: var(--color-crimson-dark);
+}
+
+.ctaArrow {
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  position: relative;
+  transition: width var(--duration-normal) var(--ease-out-expo);
+}
+
+.ctaArrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.ctaButton:hover .ctaArrow {
+  width: 28px;
 }
 
 /* ── Circular text element ── */
 .circularWrap {
   position: relative;
-  width: clamp(260px, 22vw, 360px);
-  height: clamp(260px, 22vw, 360px);
+  width: clamp(200px, 18vw, 300px);
+  height: clamp(200px, 18vw, 300px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,7 +313,7 @@
 .circularSpinner {
   position: absolute;
   inset: 0;
-  animation: circularSpin 25s linear infinite;
+  animation: circularSpin 30s linear infinite;
 }
 
 .circularSvg {
@@ -228,7 +328,7 @@
   text-transform: uppercase;
   letter-spacing: 0.35em;
   fill: var(--color-slate);
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 .circularCenter {
@@ -237,22 +337,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  border: 1px solid rgba(200, 16, 46, 0.12);
-  background: rgba(200, 16, 46, 0.03);
+  border: 1px solid rgba(200, 16, 46, 0.1);
+  background: rgba(200, 16, 46, 0.02);
 }
 
 .circularYear {
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: 42px;
+  font-size: 34px;
   color: var(--color-crimson);
   letter-spacing: -0.04em;
   line-height: 1;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 @keyframes circularSpin {
@@ -260,24 +360,35 @@
   to { transform: rotate(360deg); }
 }
 
+/* ── Year watermark — large ghosted number ── */
+.yearWatermark {
+  position: absolute;
+  right: var(--container-px);
+  bottom: clamp(40px, 6vh, 80px);
+  font-family: var(--font-display);
+  font-size: clamp(120px, 18vw, 280px);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(10, 10, 10, 0.04);
+  pointer-events: none;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
 /* ── Brand corner ── */
 .brandCorner {
   position: absolute;
-  bottom: 48px;
+  bottom: clamp(24px, 4vh, 48px);
   left: var(--container-px);
   z-index: 2;
 }
 
-.logoSvg {
-  height: 40px;
-  width: auto;
-  opacity: 0.6;
-}
-
 .logoImg {
-  height: 40px;
+  height: 36px;
   width: auto;
-  opacity: 0.4;
+  opacity: 0.35;
   display: block;
   object-fit: contain;
 }
@@ -285,7 +396,7 @@
 /* ── Scroll hint ── */
 .scrollHint {
   position: absolute;
-  bottom: 48px;
+  bottom: clamp(24px, 4vh, 48px);
   right: var(--container-px);
   z-index: 2;
   display: flex;
@@ -309,38 +420,72 @@
   width: 1px;
   height: 40px;
   background: linear-gradient(to bottom, var(--color-crimson), transparent);
-  animation: scrollDrip 2s ease-in-out infinite;
+  animation: scrollDrip 2.5s ease-in-out infinite;
 }
 
 @keyframes scrollDrip {
-  0% { transform: scaleY(0.6); opacity: 0.3; transform-origin: top; }
-  50% { transform: scaleY(1); opacity: 1; transform-origin: top; }
-  100% { transform: scaleY(0.6); opacity: 0.3; transform-origin: top; }
+  0% { transform: scaleY(0.5); opacity: 0.2; transform-origin: top; }
+  50% { transform: scaleY(1); opacity: 0.8; transform-origin: top; }
+  100% { transform: scaleY(0.5); opacity: 0.2; transform-origin: top; }
 }
 
-/* ── Responsive ── */
+/* ── Bottom edge gradient — subtle divider ── */
+.bottomEdge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(200, 16, 46, 0.08) 30%,
+    rgba(201, 168, 76, 0.06) 70%,
+    transparent
+  );
+  z-index: 3;
+}
+
+/* ═══════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════ */
+
 @media (max-width: 1024px) {
   .contentRight {
     display: none;
   }
 
   .floatingRing {
-    right: 5%;
-    width: 200px;
-    height: 200px;
+    right: -5%;
+    top: 10%;
+    width: 280px;
+    height: 280px;
     opacity: 0.5;
+  }
+
+  .yearWatermark {
+    display: none;
+  }
+
+  .tagline {
+    max-width: 100%;
   }
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+  }
+
   .container {
-    padding-top: calc(var(--nav-height) + 60px);
+    padding-bottom: clamp(100px, 16vh, 140px);
   }
 
   .floatingRing,
   .floatingLine,
   .floatingDot,
-  .horizLine {
+  .horizLine,
+  .verticalAccent {
     display: none;
   }
 
@@ -349,6 +494,28 @@
   }
 
   .scrollHint {
-    bottom: 24px;
+    bottom: 20px;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .ctaButton {
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bottomMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .metaDivider {
+    display: none;
   }
 }

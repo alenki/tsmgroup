@@ -29,7 +29,6 @@ function CircularText() {
           </text>
         </svg>
       </div>
-      {/* Center mark */}
       <div className={styles.circularCenter}>
         <span className={styles.circularYear}>97</span>
       </div>
@@ -55,6 +54,11 @@ export function Hero() {
     return () => { if (el) el.removeEventListener('mousemove', handleMove); };
   }, []);
 
+  const handleContactClick = () => {
+    const el = document.getElementById('contact');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className={styles.hero} ref={containerRef}>
       {/* Background layers with parallax */}
@@ -75,12 +79,20 @@ export function Hero() {
       <div className={styles.bgVignette} />
       <div className={styles.bgSpotlight} />
 
+      {/* Architectural accent lines */}
+      <motion.div
+        className={styles.verticalAccent}
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        transition={{ duration: 2, delay: 0.5, ease }}
+      />
+
       {/* Floating geometric accents with parallax */}
       <motion.div
         className={styles.floatingRing}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2, delay: 1.2, ease }}
+        transition={{ duration: 2.5, delay: 1, ease }}
         style={{
           transform: `translate(${mouse.x * 15}px, ${mouse.y * 15}px)`,
         }}
@@ -89,98 +101,114 @@ export function Hero() {
         className={styles.floatingLine}
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
-        transition={{ duration: 1.5, delay: 0.8, ease }}
+        transition={{ duration: 1.8, delay: 0.6, ease }}
       />
       <motion.div
         className={styles.floatingDot}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
+        transition={{ duration: 1, delay: 2.2 }}
       />
 
-      {/* Horizontal accent lines */}
+      {/* Horizontal accent line */}
       <motion.div
         className={styles.horizLine}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
-        transition={{ duration: 2, delay: 1.5, ease }}
+        transition={{ duration: 2.5, delay: 1.2, ease }}
       />
 
-      {/* Content */}
+      {/* Year watermark — giant ghosted "1997" */}
+      <motion.div
+        className={styles.yearWatermark}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, delay: 1.5 }}
+        aria-hidden="true"
+      >
+        1997
+      </motion.div>
+
+      {/* Right side — circular text element (absolutely positioned) */}
+      <motion.div
+        className={styles.contentRight}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, delay: 1.2, ease }}
+        style={{
+          transform: `translate(${mouse.x * -10}px, ${mouse.y * -10}px)`,
+        }}
+      >
+        <CircularText />
+      </motion.div>
+
+      {/* Main content — bottom-anchored */}
       <div className={styles.container}>
-        <div className={styles.contentLeft}>
-          <motion.div
-            className={styles.established}
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.2, ease }}
-          >
-            <span className={styles.estLine} />
-            <span className={styles.estText}>Est. 1997</span>
-          </motion.div>
-
-          <h1 className={styles.tagline}>
-            {['Building', ' Excellence'].map((word, i) => (
-              <motion.span
-                key={i}
-                className={i === 0 ? styles.taglineLight : styles.taglineBold}
-                initial={{ opacity: 0, y: 60, rotateX: -40 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{
-                  duration: 0.9,
-                  delay: 0.3 + i * 0.12,
-                  ease,
-                }}
-              >
-                {word}
-              </motion.span>
-            ))}
-            <br />
-            {['Across The', ' Kingdom'].map((word, i) => (
-              <motion.span
-                key={i + 2}
-                className={i === 0 ? styles.taglineLight : styles.taglineBold}
-                initial={{ opacity: 0, y: 60, rotateX: -40 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{
-                  duration: 0.9,
-                  delay: 0.5 + i * 0.12,
-                  ease,
-                }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </h1>
-
-          <motion.div
-            className={styles.rule}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.9, ease }}
-          />
-
-          <motion.p
-            className={styles.subtext}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1, ease }}
-          >
-            {siteContent.hero.location}
-          </motion.p>
-        </div>
-
-        {/* Right side — circular text element */}
         <motion.div
-          className={styles.contentRight}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, delay: 1, ease }}
-          style={{
-            transform: `translate(${mouse.x * -10}px, ${mouse.y * -10}px)`,
-          }}
+          className={styles.established}
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, delay: 0.3, ease }}
         >
-          <CircularText />
+          <span className={styles.estLine} />
+          <span className={styles.estText}>Est. 1997</span>
+        </motion.div>
+
+        <h1 className={styles.tagline}>
+          {['Building', ' Excellence'].map((word, i) => (
+            <motion.span
+              key={i}
+              className={i === 0 ? styles.taglineLight : styles.taglineBold}
+              initial={{ opacity: 0, y: 70, rotateX: -35 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{
+                duration: 1,
+                delay: 0.4 + i * 0.12,
+                ease,
+              }}
+            >
+              {word}
+            </motion.span>
+          ))}
+          <br />
+          {['Across The', ' Kingdom'].map((word, i) => (
+            <motion.span
+              key={i + 2}
+              className={i === 0 ? styles.taglineLight : styles.taglineBold}
+              initial={{ opacity: 0, y: 70, rotateX: -35 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{
+                duration: 1,
+                delay: 0.6 + i * 0.12,
+                ease,
+              }}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </h1>
+
+        {/* Bottom bar — meta info + CTA */}
+        <motion.div
+          className={styles.bottomBar}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 1.1, ease }}
+        >
+          <div className={styles.bottomMeta}>
+            <span className={styles.metaText}>
+              {siteContent.hero.location}
+            </span>
+            <span className={styles.metaDivider} />
+            <span className={styles.metaText}>
+              Diversified Conglomerate
+            </span>
+          </div>
+
+          <button className={styles.ctaButton} onClick={handleContactClick}>
+            Get In Touch
+            <span className={styles.ctaArrow} />
+          </button>
         </motion.div>
       </div>
 
@@ -189,7 +217,7 @@ export function Hero() {
         className={styles.brandCorner}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.6 }}
+        transition={{ duration: 1, delay: 1.8 }}
       >
         <img src="/logo.png" alt="TSM Group" className={styles.logoImg} />
       </motion.div>
@@ -199,11 +227,14 @@ export function Hero() {
         className={styles.scrollHint}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.8 }}
+        transition={{ delay: 2.2, duration: 0.8 }}
       >
         <span className={styles.scrollText}>Scroll</span>
         <span className={styles.scrollLine} />
       </motion.div>
+
+      {/* Bottom edge — elegant divider to white content below */}
+      <div className={styles.bottomEdge} />
     </section>
   );
 }

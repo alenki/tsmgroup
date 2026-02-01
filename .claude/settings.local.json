@@ -21,7 +21,8 @@
       "Bash(python:*)",
       "WebFetch(domain:dsgngroup.it)",
       "WebFetch(domain:tref.digitaldesignnyc.co)",
-      "mcp__playwright__browser_wait_for"
+      "mcp__playwright__browser_wait_for",
+      "Bash(dir:*)"
     ]
   }
 }
