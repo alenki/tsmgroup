@@ -184,7 +184,7 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 1024px) {
+@media (max-width: 1700px) {
   .layout {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -193,7 +193,7 @@
   .portraitSide {
     position: relative;
     top: auto;
-    max-width: 380px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
