@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { RevealOnScroll } from '../shared/RevealOnScroll';
 import { SectionHeading } from '../shared/SectionHeading';
@@ -17,6 +18,7 @@ export function Companies() {
   }, [activeCompany]);
 
   return (
+    <>
     <section id="companies" className={styles.section}>
       {/* Background decorative elements */}
       <div className={styles.bgPattern} aria-hidden="true" />
@@ -97,49 +99,54 @@ export function Companies() {
         </div>
       </div>
 
-      {/* Modal */}
-      <AnimatePresence>
-        {activeCompany && (
-          <motion.div
-            className={styles.overlay}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            onClick={() => setActiveCompany(null)}
-          >
-            <motion.div
-              className={styles.modal}
-              initial={{ opacity: 0, y: 40, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 40, scale: 0.97 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className={styles.modalHeader}>
-                <div
-                  className={styles.modalAccent}
-                  style={{ background: activeCompany.color }}
-                />
-                <span className={styles.modalTagline}>{activeCompany.tagline}</span>
-                <h3 className={styles.modalName}>{activeCompany.name}</h3>
-              </div>
-
-              <p className={styles.modalDesc}>{activeCompany.description}</p>
-
-              <button
-                className={styles.modalClose}
-                onClick={() => setActiveCompany(null)}
-                aria-label="Close"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
+
+      {/* Modal — portaled to body to avoid overflow:hidden clipping */}
+      {createPortal(
+        <AnimatePresence>
+          {activeCompany && (
+            <motion.div
+              className={styles.overlay}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setActiveCompany(null)}
+            >
+              <motion.div
+                className={styles.modal}
+                initial={{ opacity: 0, y: 40, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 40, scale: 0.97 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className={styles.modalHeader}>
+                  <div
+                    className={styles.modalAccent}
+                    style={{ background: activeCompany.color }}
+                  />
+                  <span className={styles.modalTagline}>{activeCompany.tagline}</span>
+                  <h3 className={styles.modalName}>{activeCompany.name}</h3>
+                </div>
+
+                <p className={styles.modalDesc}>{activeCompany.description}</p>
+
+                <button
+                  className={styles.modalClose}
+                  onClick={() => setActiveCompany(null)}
+                  aria-label="Close"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+    </>
   );
 }
