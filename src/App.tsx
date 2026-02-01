@@ -1,4 +1,6 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import { PageLoader } from './components/PageLoader/PageLoader';
 import { CustomCursor } from './components/CustomCursor/CustomCursor';
 import { Navbar } from './components/Navbar/Navbar';
@@ -16,6 +18,21 @@ function App() {
 
   const handleLoaded = useCallback(() => {
     setLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   return (
