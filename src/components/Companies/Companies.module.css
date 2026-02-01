@@ -329,6 +329,25 @@
   }
 }
 
+@media (hover: none) {
+  .cardNum {
+    -webkit-text-stroke: 1px var(--card-accent, rgba(200, 16, 46, 0.2));
+  }
+
+  .cardDash {
+    width: 28px;
+  }
+
+  .cardCta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cardBar {
+    transform: scaleX(1);
+  }
+}
+
 @media (max-width: 480px) {
   .cardGrid {
     grid-template-columns: 1fr;
