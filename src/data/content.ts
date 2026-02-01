@@ -37,7 +37,7 @@ export const siteContent = {
   },
 
   chairman: {
-    name: 'Chairman of the Board',
+    name: 'Thamer Bin Saud Al Muraibdh',
     paragraphs: [
       "In the journey of life, our destinies were written.. Some of us are destined to be a doctor, a scientist, a teacher, or a merchant.. and everyone becomes what Allah destined for him. Glory ways are not associated with the profession but with insistence, the pace steady, perfect vision, and determination to launch its owner unleashed to reach the highest peaks.",
       "Eagle doesn't fold its wings and stop flying as long as there is a summit was not reached. This is my belief depending on Allah and adhering to teachings of Islam and the morality instilled into me since I grew up on the land of the Kingdom.",
