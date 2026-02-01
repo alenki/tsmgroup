@@ -8,7 +8,7 @@
 /* ── Large decorative background number ── */
 .bigNumber {
   position: absolute;
-  top: -40px;
+  top: -80px;
   right: var(--container-px);
   pointer-events: none;
   user-select: none;
@@ -18,11 +18,11 @@
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: clamp(200px, 28vw, 520px);
+  font-size: clamp(180px, 24vw, 440px);
   line-height: 1;
   color: transparent;
   -webkit-text-stroke: 1.5px var(--color-pearl);
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .container {
@@ -37,9 +37,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 64px;
-  padding-bottom: 44px;
-  border-bottom: 1px solid var(--color-pearl);
+  margin-bottom: 56px;
 }
 
 .headingAccent {
@@ -66,30 +64,32 @@
   color: var(--color-crimson);
 }
 
-/* ── Two-column grid — full width with proportional columns ── */
+/* ── Two-column grid ── */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(60px, 8vw, 160px);
-  align-items: start;
+  grid-template-columns: 5fr 6fr;
+  gap: clamp(48px, 6vw, 120px);
+  align-items: stretch;
 }
 
 .textCol {
-  max-width: 620px;
-  padding-top: 8px;
+  max-width: 560px;
+  padding-top: 4px;
 }
 
 .paragraph {
   font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.9;
+  font-size: 16px;
+  line-height: 1.85;
   color: var(--color-slate);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .paragraphSmall {
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 1.8;
   color: var(--color-ash);
+  margin-bottom: 16px;
 }
 
 /* ── Section divider ── */
@@ -97,7 +97,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin: 36px 0;
+  margin: 32px 0 28px;
 }
 
 .dividerLine {
@@ -116,20 +116,30 @@
   flex-shrink: 0;
 }
 
-/* ── Activity cards — staggered grid ── */
+/* ── Activity cards ── */
 .cardsCol {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
   padding-top: 0;
+  align-self: stretch;
+}
+
+.cardsCol > * {
+  min-height: 0;
 }
 
 .card {
   position: relative;
-  padding: 36px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 32px 24px 28px;
   background: var(--color-white);
   border: 1px solid var(--color-pearl);
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
   transition:
     border-color var(--duration-normal) var(--ease-out-expo),
@@ -137,23 +147,10 @@
     transform var(--duration-normal) var(--ease-out-expo);
 }
 
-.card:nth-child(2) {
-  transform: translateY(32px);
-}
-
-.card:nth-child(4) {
-  transform: translateY(32px);
-}
-
 .card:hover {
   border-color: var(--color-crimson);
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
-}
-
-.card:nth-child(2):hover,
-.card:nth-child(4):hover {
-  transform: translateY(28px);
 }
 
 .cardFeatured {
@@ -176,7 +173,7 @@
 .cardNumber {
   position: absolute;
   top: 12px;
-  right: 16px;
+  right: 14px;
   font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 600;
@@ -185,15 +182,15 @@
 }
 
 .cardIcon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   color: var(--color-crimson);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   transition: transform var(--duration-normal) var(--ease-out-expo);
 }
 
 .card:hover .cardIcon {
-  transform: scale(1.1) rotate(-5deg);
+  transform: scale(1.08) rotate(-4deg);
 }
 
 .cardTitle {
@@ -201,7 +198,7 @@
   font-weight: 600;
   font-size: 14px;
   color: var(--color-black);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   letter-spacing: 0.02em;
 }
 
@@ -233,7 +230,7 @@
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 56px;
+    gap: 48px;
   }
 
   .textCol {
@@ -256,15 +253,6 @@
     padding-bottom: 0;
   }
 
-  .card:nth-child(2),
-  .card:nth-child(4) {
-    transform: none;
-  }
-
-  .card:nth-child(2):hover,
-  .card:nth-child(4):hover {
-    transform: translateY(-4px);
-  }
 }
 
 @media (max-width: 480px) {
