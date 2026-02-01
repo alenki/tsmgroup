@@ -29,34 +29,8 @@
   border-bottom: 1px solid var(--color-pearl);
 }
 
-.headerLabel {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: var(--color-gold);
-  margin-bottom: 12px;
-}
-
-.heading {
-  line-height: 1.05;
-}
-
-.headingLight {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(32px, 4vw, 52px);
-  color: var(--color-ash);
-}
-
-.headingBold {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-style: italic;
-  font-size: clamp(32px, 4vw, 52px);
-  color: var(--color-black);
+.header > div:first-child {
+  margin-bottom: 0;
 }
 
 .headerDesc {

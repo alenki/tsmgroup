@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { RevealOnScroll } from '../shared/RevealOnScroll';
+import { SectionHeading } from '../shared/SectionHeading';
 import { companies } from '../../data/companies';
 import type { Company } from '../../data/companies';
 import styles from './Companies.module.css';
@@ -16,13 +17,7 @@ export function Companies() {
       <div className={styles.container}>
         <RevealOnScroll>
           <div className={styles.header}>
-            <div className={styles.headerLeft}>
-              <span className={styles.headerLabel}>What We Do</span>
-              <h2 className={styles.heading}>
-                <span className={styles.headingLight}>Our </span>
-                <span className={styles.headingBold}>Companies</span>
-              </h2>
-            </div>
+            <SectionHeading topText="Our" bottomText="Companies" />
             <p className={styles.headerDesc}>
               A diversified portfolio of companies serving industries across
               the Kingdom of Saudi Arabia.
