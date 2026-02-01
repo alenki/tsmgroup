@@ -33,6 +33,8 @@ export function Navbar() {
 
   const handleClick = (id: string) => {
     setMobileOpen(false);
+    lenis?.start();
+    document.body.style.overflow = '';
     const el = document.getElementById(id);
     if (el) {
       lenis ? lenis.scrollTo(el) : el.scrollIntoView({ behavior: 'smooth' });
