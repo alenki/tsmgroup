@@ -16,7 +16,7 @@
 }
 
 .container {
-  max-width: var(--container-wide);
+  width: 100%;
   margin: 0 auto;
   padding: 0 var(--container-px);
   position: relative;
@@ -63,7 +63,7 @@
 }
 
 .headerDesc {
-  max-width: 280px;
+  max-width: 320px;
   font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 300;
@@ -73,11 +73,11 @@
   padding-bottom: 8px;
 }
 
-/* ── Card grid ── */
+/* ── Card grid — full width, 4 columns ── */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: clamp(16px, 2vw, 28px);
 }
 
 /* ── Card ── */
@@ -107,7 +107,7 @@
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: 72px;
+  font-size: clamp(56px, 5vw, 80px);
   line-height: 1;
   color: transparent;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
@@ -182,7 +182,7 @@
 
 .cardName {
   font-family: var(--font-display);
-  font-size: clamp(20px, 2vw, 26px);
+  font-size: clamp(20px, 2vw, 28px);
   font-weight: 700;
   color: var(--color-white);
   line-height: 1.2;

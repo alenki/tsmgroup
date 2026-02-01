@@ -35,10 +35,10 @@
 /* ── Floating geometric accents ── */
 .floatingRing {
   position: absolute;
-  right: 15%;
-  top: 20%;
-  width: 340px;
-  height: 340px;
+  right: 12%;
+  top: 18%;
+  width: 420px;
+  height: 420px;
   border: 1px solid rgba(200, 16, 46, 0.08);
   border-radius: 50%;
   pointer-events: none;
@@ -48,17 +48,17 @@
 .floatingRing::after {
   content: '';
   position: absolute;
-  inset: 40px;
+  inset: 50px;
   border: 1px solid rgba(201, 168, 76, 0.06);
   border-radius: 50%;
 }
 
 .floatingLine {
   position: absolute;
-  right: 33%;
+  right: 28%;
   top: 8%;
   width: 1px;
-  height: 200px;
+  height: 240px;
   background: linear-gradient(to bottom, transparent, rgba(200, 16, 46, 0.12), transparent);
   transform-origin: top;
   pointer-events: none;
@@ -66,7 +66,7 @@
 
 .floatingDot {
   position: absolute;
-  right: 33%;
+  right: 28%;
   top: 8%;
   width: 6px;
   height: 6px;
@@ -85,18 +85,17 @@
 .container {
   position: relative;
   z-index: 2;
-  max-width: var(--container-wide);
+  width: 100%;
   margin: 0 auto;
   padding: 0 var(--container-px);
   padding-top: calc(var(--nav-height) + 20px);
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .contentLeft {
-  max-width: 660px;
+  max-width: 720px;
 }
 
 /* ── Established badge ── */
@@ -108,7 +107,7 @@
 }
 
 .estLine {
-  width: 40px;
+  width: 48px;
   height: 1px;
   background: var(--color-gold);
 }
@@ -125,7 +124,7 @@
 /* ── Tagline ── */
 .tagline {
   font-family: var(--font-display);
-  font-size: clamp(42px, 6.5vw, 82px);
+  font-size: clamp(42px, 6.5vw, 96px);
   line-height: 1.05;
   color: var(--color-white);
   letter-spacing: -0.025em;
@@ -145,7 +144,7 @@
 /* ── Red rule ── */
 .rule {
   display: block;
-  width: 60px;
+  width: 72px;
   height: 3px;
   background: var(--color-crimson);
   margin-top: 40px;
@@ -175,7 +174,7 @@
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: clamp(100px, 14vw, 200px);
+  font-size: clamp(100px, 16vw, 260px);
   line-height: 0.85;
   color: transparent;
   -webkit-text-stroke: 1px rgba(200, 16, 46, 0.15);

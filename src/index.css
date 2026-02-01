@@ -31,9 +31,10 @@
 
   /* Spacing */
   --section-py: clamp(100px, 12vw, 180px);
-  --container-max: 1200px;
-  --container-px: clamp(24px, 5vw, 80px);
-  --container-wide: 1400px;
+  --container-max: 100%;
+  --container-px: clamp(32px, 6vw, 120px);
+  --container-wide: 100%;
+  --container-narrow: 680px;
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
