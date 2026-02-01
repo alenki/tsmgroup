@@ -6,36 +6,6 @@ import styles from './Hero.module.css';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-function CircularText() {
-  const text = 'BUILDING EXCELLENCE \u2022 SINCE 1997 \u2022 TSM GROUP \u2022 RIYADH KSA \u2022 ';
-  const chars = text.split('');
-
-  return (
-    <div className={styles.circularWrap}>
-      <div className={styles.circularSpinner}>
-        <svg viewBox="0 0 300 300" className={styles.circularSvg}>
-          <defs>
-            <path
-              id="circlePath"
-              d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0"
-            />
-          </defs>
-          <text className={styles.circularTextSvg}>
-            <textPath href="#circlePath" startOffset="0%">
-              {chars.map((char, i) => (
-                <tspan key={i}>{char}</tspan>
-              ))}
-            </textPath>
-          </text>
-        </svg>
-      </div>
-      <div className={styles.circularCenter}>
-        <span className={styles.circularYear}>97</span>
-      </div>
-    </div>
-  );
-}
-
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
