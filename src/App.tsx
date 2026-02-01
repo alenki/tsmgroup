@@ -34,11 +34,6 @@ function App() {
         <StatsCounter />
         <Chairman />
         <Companies />
-        <MarqueeDivider
-          text={"Maestro \u2022 Saudi Blantex \u2022 Pronto \u2022 TSM Security"}
-          variant="light"
-          reverse
-        />
         <Clients />
         <Contact />
         <Footer />

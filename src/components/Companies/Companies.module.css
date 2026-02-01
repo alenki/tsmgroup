@@ -73,78 +73,17 @@
   padding-bottom: 8px;
 }
 
-/* ── Horizontal scroll ── */
-.scrollOuter {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  /* Fade masks on edges */
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 3%,
-    black 97%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 3%,
-    black 97%,
-    transparent 100%
-  );
-}
-
-.scrollOuter::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollTrack {
-  display: flex;
+/* ── Card grid ── */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: clamp(20px, 2.5vw, 32px);
-  padding: 0 var(--container-px);
-  width: max-content;
-}
-
-/* ── Scroll hint ── */
-.scrollHint {
-  margin-top: 32px;
-}
-
-.scrollHintInner {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.scrollHintText {
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--color-ash);
-}
-
-.scrollHintArrow {
-  width: 16px;
-  height: 16px;
-  color: var(--color-crimson);
-  animation: arrowSlide 1.5s ease-in-out infinite;
-}
-
-@keyframes arrowSlide {
-  0%, 100% { transform: translateX(0); opacity: 0.5; }
-  50% { transform: translateX(6px); opacity: 1; }
 }
 
 /* ── Card ── */
 .card {
   position: relative;
-  width: clamp(280px, 22vw, 340px);
+  width: 100%;
   aspect-ratio: 4 / 5;
   border-radius: 6px;
   overflow: hidden;
@@ -153,7 +92,6 @@
   padding: 0;
   background: none;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  flex-shrink: 0;
   transition: border-color var(--duration-normal) var(--ease-out-expo);
 }
 
@@ -424,21 +362,17 @@
     text-align: left;
   }
 
-  .scrollHint {
-    display: block;
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  .card {
-    width: 280px;
+  .cardGrid {
+    grid-template-columns: 1fr;
   }
 
   .modal {
     padding: 40px 28px 36px;
-  }
-
-  .scrollHint {
-    display: none;
   }
 }

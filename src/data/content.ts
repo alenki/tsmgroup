@@ -7,7 +7,7 @@ export const siteContent = {
 
   about: {
     paragraphs: [
-      'TSM Group of Companies was established in 1997 to cover the growing demand in the local market in different sectors. The Group has grown with the time to more than five leading companies in various commercial activities.',
+      'TSM Group of Companies was established in 1997 to cover the growing demand in the local market in different sectors. The Group has grown with the time to four leading companies in various commercial activities.',
       "This expansion came by Allah's reconcile primarily, then by continuous effort on the expansion plans and studies to develop the business of these companies followed by constructed investments.",
       'The Group aimed since the beginning an expansion strategy based on diversifications of the commercial activities to include textile manufacturing, event management, medical services, furniture production, and security solutions.',
       "The Group's business activities covered many areas within the Kingdom of Saudi Arabia, in addition to various commercial activities such as supply of automobile, vehicles & building armory, telecommunication & electronics trading, and real estate.",

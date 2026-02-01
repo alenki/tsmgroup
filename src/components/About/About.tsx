@@ -43,7 +43,7 @@ export function About() {
     <section id="about" className={styles.section}>
       {/* Large decorative number */}
       <div className={styles.bigNumber} aria-hidden="true">
-        <span>5+</span>
+        <span>4</span>
       </div>
 
       <div className={styles.container}>

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { RevealOnScroll } from '../shared/RevealOnScroll';
 import { companies } from '../../data/companies';
@@ -7,7 +7,6 @@ import styles from './Companies.module.css';
 
 export function Companies() {
   const [activeCompany, setActiveCompany] = useState<Company | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
     <section id="companies" className={styles.section}>
@@ -32,9 +31,9 @@ export function Companies() {
         </RevealOnScroll>
       </div>
 
-      {/* Horizontal scroll track */}
-      <div className={styles.scrollOuter}>
-        <div className={styles.scrollTrack} ref={scrollRef}>
+      {/* Cards grid */}
+      <div className={styles.container}>
+        <div className={styles.cardGrid}>
           {companies.map((company, i) => (
             <RevealOnScroll key={company.slug} delay={0.1 + i * 0.12}>
               <button
@@ -93,18 +92,6 @@ export function Companies() {
               </button>
             </RevealOnScroll>
           ))}
-        </div>
-      </div>
-
-      {/* Scroll hint */}
-      <div className={styles.scrollHint}>
-        <div className={styles.container}>
-          <div className={styles.scrollHintInner}>
-            <span className={styles.scrollHintText}>Scroll to explore</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={styles.scrollHintArrow}>
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </div>
         </div>
       </div>
 
