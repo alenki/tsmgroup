@@ -44,7 +44,14 @@
   display: flex;
   gap: 48px;
   width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
   animation: marqueeScroll 60s linear infinite;
+  animation-play-state: paused;
+}
+
+.marqueeInner.running {
+  animation-play-state: running;
 }
 
 .reverse .marqueeInner {

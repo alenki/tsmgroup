@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from 'react';
 import { RevealOnScroll } from '../shared/RevealOnScroll';
 import { SectionHeading } from '../shared/SectionHeading';
 import { clients } from '../../data/clients';
@@ -6,16 +7,37 @@ import styles from './Clients.module.css';
 function ClientLogo({ src }: { src: string }) {
   return (
     <div className={styles.logoPlaceholder}>
-      <img src={src} alt="" className={styles.logoImg} />
+      <img src={src} alt="" loading="lazy" className={styles.logoImg} />
     </div>
   );
 }
 
 function MarqueeRow({ items, reverse }: { items: string[]; reverse?: boolean }) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={`${styles.marqueeTrack} ${reverse ? styles.reverse : ''}`}>
-      <div className={styles.marqueeInner}>
-        {/* Duplicate for seamless loop */}
+    <div
+      ref={trackRef}
+      className={`${styles.marqueeTrack} ${reverse ? styles.reverse : ''}`}
+    >
+      <div className={`${styles.marqueeInner} ${visible ? styles.running : ''}`}>
         {[...items, ...items].map((src, i) => (
           <ClientLogo key={`${src}-${i}`} src={src} />
         ))}
@@ -37,12 +59,10 @@ export function Clients() {
         </RevealOnScroll>
       </div>
 
-      <RevealOnScroll delay={0.15}>
-        <div className={styles.marqueeWrap}>
-          <MarqueeRow items={row1} />
-          <MarqueeRow items={row2} reverse />
-        </div>
-      </RevealOnScroll>
+      <div className={styles.marqueeWrap}>
+        <MarqueeRow items={row1} />
+        <MarqueeRow items={row2} reverse />
+      </div>
     </section>
   );
 }
