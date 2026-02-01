@@ -1,6 +1,7 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
+import { LenisContext } from './context/LenisContext';
 import { PageLoader } from './components/PageLoader/PageLoader';
 import { CustomCursor } from './components/CustomCursor/CustomCursor';
 import { Navbar } from './components/Navbar/Navbar';
@@ -20,8 +21,13 @@ function App() {
     setLoaded(true);
   }, []);
 
+  const lenisRef = useRef<Lenis | null>(null);
+  const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null);
+
   useEffect(() => {
     const lenis = new Lenis();
+    lenisRef.current = lenis;
+    setLenisInstance(lenis);
 
     function raf(time: number) {
       lenis.raf(time);
@@ -32,11 +38,12 @@ function App() {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
   return (
-    <>
+    <LenisContext.Provider value={lenisInstance}>
       <PageLoader onComplete={handleLoaded} />
       <CustomCursor />
       <div style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s ease' }}>
@@ -50,7 +57,7 @@ function App() {
         <Contact />
         <Footer />
       </div>
-    </>
+    </LenisContext.Provider>
   );
 }
 

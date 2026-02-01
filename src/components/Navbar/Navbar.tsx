@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLenis } from '../../context/LenisContext';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import type { SectionId } from '../../hooks/useScrollSpy';
 import styles from './Navbar.module.css';
@@ -12,6 +13,7 @@ const NAV_ITEMS: { id: SectionId; label: string }[] = [
 ];
 
 export function Navbar() {
+  const lenis = useLenis();
   const { activeSection, scrolled } = useScrollSpy();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -19,7 +21,7 @@ export function Navbar() {
     setMobileOpen(false);
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      lenis ? lenis.scrollTo(el) : el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -28,7 +30,7 @@ export function Navbar() {
       <div className={styles.container}>
         <button
           className={styles.logo}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => lenis ? lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="Scroll to top"
         >
           <img src="/logo.png" alt="TSM Group" className={styles.logoImg} />
