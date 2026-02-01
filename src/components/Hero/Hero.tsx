@@ -85,22 +85,6 @@ export function Hero() {
       <div className={styles.bgVignette} />
       <div className={styles.bgSpotlight} />
 
-      {/* Architectural accent lines */}
-      <motion.div
-        className={styles.verticalAccent}
-        initial={{ scaleY: 0 }}
-        animate={{ scaleY: 1 }}
-        transition={{ duration: 2, delay: 0.5, ease }}
-      />
-
-
-      {/* Horizontal accent line */}
-      <motion.div
-        className={styles.horizLine}
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 2.5, delay: 1.2, ease }}
-      />
 
       {/* Year watermark — giant ghosted "1997" */}
       <motion.div

@@ -125,40 +125,6 @@
   box-shadow: 0 0 20px rgba(200, 16, 46, 0.2);
 }
 
-/* Horizontal accent line — low across the hero */
-.horizLine {
-  position: absolute;
-  bottom: 32%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 5%,
-    rgba(200, 16, 46, 0.04) 25%,
-    rgba(201, 168, 76, 0.04) 75%,
-    transparent 95%
-  );
-  transform-origin: left;
-  pointer-events: none;
-}
-
-/* Vertical accent — left edge architectural line */
-.verticalAccent {
-  position: absolute;
-  left: var(--container-px);
-  top: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(200, 16, 46, 0.05) 30%,
-    rgba(200, 16, 46, 0.05) 70%,
-    transparent
-  );
-  pointer-events: none;
-}
 
 @keyframes ringPulse {
   0%, 100% { transform: scale(1); opacity: 1; }
@@ -209,7 +175,7 @@
 
 /* ── Tagline — massive, editorial, bottom-anchored ── */
 .tagline {
-  font-family: var(--font-display);
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-size: clamp(48px, 7.5vw, 110px);
   line-height: 1.0;
   color: var(--color-black);
@@ -493,9 +459,7 @@
 
   .floatingRing,
   .floatingLine,
-  .floatingDot,
-  .horizLine,
-  .verticalAccent {
+  .floatingDot {
     display: none;
   }
 
