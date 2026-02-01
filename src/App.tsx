@@ -20,10 +20,15 @@ function App() {
 
   const handleLoaded = useCallback(() => {
     setLoaded(true);
+    document.body.style.overflow = '';
   }, []);
 
   const lenisRef = useRef<Lenis | null>(null);
   const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+  }, []);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -42,6 +47,16 @@ function App() {
       lenisRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    const lenis = lenisRef.current;
+    if (!lenis) return;
+    if (loaded) {
+      lenis.start();
+    } else {
+      lenis.stop();
+    }
+  }, [loaded, lenisInstance]);
 
   return (
     <LenisContext.Provider value={lenisInstance}>
