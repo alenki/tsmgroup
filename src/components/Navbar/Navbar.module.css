@@ -73,7 +73,7 @@
 }
 
 .nav:not(.scrolled) .link:hover {
-  color: var(--color-black);
+  color: var(--color-crimson);
 }
 
 .nav:not(.scrolled) .link.active {
@@ -85,7 +85,7 @@
 }
 
 .scrolled .link:hover {
-  color: var(--color-black);
+  color: var(--color-crimson);
 }
 
 .scrolled .link.active {

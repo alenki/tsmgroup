@@ -329,7 +329,7 @@
 }
 
 .modalClose:hover {
-  color: var(--color-black);
+  color: var(--color-crimson);
   background: var(--color-ivory);
 }
 
