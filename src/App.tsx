@@ -3,7 +3,6 @@ import { PageLoader } from './components/PageLoader/PageLoader';
 import { CustomCursor } from './components/CustomCursor/CustomCursor';
 import { Navbar } from './components/Navbar/Navbar';
 import { Hero } from './components/Hero/Hero';
-import { MarqueeDivider } from './components/MarqueeDivider/MarqueeDivider';
 import { About } from './components/About/About';
 import { StatsCounter } from './components/StatsCounter/StatsCounter';
 import { Chairman } from './components/Chairman/Chairman';
@@ -26,10 +25,6 @@ function App() {
       <div style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s ease' }}>
         <Navbar />
         <Hero />
-        <MarqueeDivider
-          text="Building Excellence Across The Kingdom"
-          variant="crimson"
-        />
         <About />
         <StatsCounter />
         <Chairman />

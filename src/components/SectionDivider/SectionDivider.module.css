@@ -1,0 +1,41 @@
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--container-px);
+  height: 80px;
+  background: var(--color-white);
+  position: relative;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 16, 46, 0.15) 20%,
+    rgba(200, 16, 46, 0.25) 50%,
+    rgba(200, 16, 46, 0.15) 80%,
+    transparent 100%
+  );
+  max-width: 600px;
+}
+
+.mark {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid rgba(200, 16, 46, 0.3);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  margin: 0 20px;
+  position: relative;
+}
+
+.mark::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: var(--color-crimson);
+  opacity: 0.2;
+}
