@@ -95,6 +95,7 @@ export function Navbar() {
 
         <button
           className={`${styles.hamburger} ${mobileOpen && !closing ? styles.hamburgerOpen : ''}`}
+          onPointerDown={() => lenis?.stop()}
           onClick={() => mobileOpen ? closeMobile() : setMobileOpen(true)}
           aria-label="Toggle menu"
         >
