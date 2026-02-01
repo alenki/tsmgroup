@@ -121,13 +121,22 @@ ul, ol {
   color: var(--color-white);
 }
 
+/* Custom cursor — hide default on desktop */
+@media (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-black);
+  background: var(--color-ivory);
 }
 
 ::-webkit-scrollbar-thumb {

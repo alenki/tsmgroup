@@ -1,6 +1,6 @@
 .section {
-  padding: var(--section-py) 0;
-  background: var(--color-charcoal);
+  padding: var(--section-py) 0 clamp(60px, 8vw, 100px);
+  background: var(--color-ivory);
   position: relative;
   overflow: hidden;
 }
@@ -10,8 +10,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 50% 40% at 80% 15%, rgba(200, 16, 46, 0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 10% 85%, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
+    radial-gradient(ellipse 50% 40% at 80% 15%, rgba(200, 16, 46, 0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 10% 85%, rgba(201, 168, 76, 0.02) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -29,7 +29,7 @@
   justify-content: space-between;
   margin-bottom: 64px;
   padding-bottom: 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--color-pearl);
 }
 
 .headerLabel {
@@ -51,7 +51,7 @@
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(32px, 4vw, 52px);
-  color: var(--color-silver);
+  color: var(--color-ash);
 }
 
 .headingBold {
@@ -59,7 +59,7 @@
   font-weight: 900;
   font-style: italic;
   font-size: clamp(32px, 4vw, 52px);
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
 .headerDesc {
@@ -73,17 +73,78 @@
   padding-bottom: 8px;
 }
 
-/* ── Card grid — full width, 4 columns ── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(16px, 2vw, 28px);
+/* ── Horizontal scroll ── */
+.scrollOuter {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Fade masks on edges */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 3%,
+    black 97%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 3%,
+    black 97%,
+    transparent 100%
+  );
+}
+
+.scrollOuter::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollTrack {
+  display: flex;
+  gap: clamp(20px, 2.5vw, 32px);
+  padding: 0 var(--container-px);
+  width: max-content;
+}
+
+/* ── Scroll hint ── */
+.scrollHint {
+  margin-top: 32px;
+}
+
+.scrollHintInner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scrollHintText {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-ash);
+}
+
+.scrollHintArrow {
+  width: 16px;
+  height: 16px;
+  color: var(--color-crimson);
+  animation: arrowSlide 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowSlide {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  50% { transform: translateX(6px); opacity: 1; }
 }
 
 /* ── Card ── */
 .card {
   position: relative;
-  width: 100%;
+  width: clamp(280px, 22vw, 340px);
   aspect-ratio: 4 / 5;
   border-radius: 6px;
   overflow: hidden;
@@ -91,12 +152,13 @@
   text-align: left;
   padding: 0;
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
   transition: border-color var(--duration-normal) var(--ease-out-expo);
 }
 
 .card:hover {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 /* Large number */
@@ -110,7 +172,7 @@
   font-size: clamp(56px, 5vw, 80px);
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.06);
   z-index: 2;
   pointer-events: none;
   transition: -webkit-text-stroke var(--duration-slow) var(--ease-out-expo);
@@ -352,10 +414,6 @@
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .header {
     flex-direction: column;
     align-items: flex-start;
@@ -365,16 +423,22 @@
   .headerDesc {
     text-align: left;
   }
+
+  .scrollHint {
+    display: block;
+  }
 }
 
 @media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr;
-    max-width: 380px;
-    margin: 0 auto;
+  .card {
+    width: 280px;
   }
 
   .modal {
     padding: 40px 28px 36px;
+  }
+
+  .scrollHint {
+    display: none;
   }
 }

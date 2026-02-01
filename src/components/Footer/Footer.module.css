@@ -1,5 +1,5 @@
 .footer {
-  background: var(--color-black);
+  background: var(--color-ivory);
   padding: 56px 0 40px;
   position: relative;
 }
@@ -12,7 +12,7 @@
   right: 0;
   height: 1px;
   background: linear-gradient(to right, transparent, var(--color-crimson), transparent);
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .container {
@@ -43,7 +43,7 @@
 
 .divider {
   height: 1px;
-  background: var(--color-graphite);
+  background: var(--color-pearl);
   margin: 28px 0;
 }
 
@@ -79,14 +79,14 @@
 }
 
 .footerLink:hover {
-  color: var(--color-crimson-light);
+  color: var(--color-crimson);
 }
 
 .dot {
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background: var(--color-graphite);
+  background: var(--color-pearl);
 }
 
 @media (max-width: 768px) {

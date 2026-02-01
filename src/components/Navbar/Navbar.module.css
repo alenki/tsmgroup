@@ -69,12 +69,15 @@
 }
 
 .nav:not(.scrolled) .link {
-  color: rgba(254, 254, 254, 0.8);
+  color: var(--color-slate);
 }
 
-.nav:not(.scrolled) .link:hover,
+.nav:not(.scrolled) .link:hover {
+  color: var(--color-black);
+}
+
 .nav:not(.scrolled) .link.active {
-  color: var(--color-white);
+  color: var(--color-crimson);
 }
 
 .scrolled .link {
@@ -89,7 +92,7 @@
   color: var(--color-crimson);
 }
 
-.link.active::after {
+.link::after {
   content: '';
   position: absolute;
   bottom: 2px;
@@ -97,6 +100,14 @@
   right: 14px;
   height: 2px;
   background: var(--color-crimson);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+
+.link:hover::after,
+.link.active::after {
+  transform: scaleX(1);
 }
 
 .langDivider {
@@ -131,7 +142,7 @@
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--color-white);
+  background: var(--color-black);
   transition:
     transform var(--duration-normal) var(--ease-out-expo),
     opacity var(--duration-fast);

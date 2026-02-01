@@ -1,6 +1,11 @@
+import { useState, useCallback } from 'react';
+import { PageLoader } from './components/PageLoader/PageLoader';
+import { CustomCursor } from './components/CustomCursor/CustomCursor';
 import { Navbar } from './components/Navbar/Navbar';
 import { Hero } from './components/Hero/Hero';
+import { MarqueeDivider } from './components/MarqueeDivider/MarqueeDivider';
 import { About } from './components/About/About';
+import { StatsCounter } from './components/StatsCounter/StatsCounter';
 import { Chairman } from './components/Chairman/Chairman';
 import { Companies } from './components/Companies/Companies';
 import { Clients } from './components/Clients/Clients';
@@ -8,16 +13,36 @@ import { Contact } from './components/Contact/Contact';
 import { Footer } from './components/Footer/Footer';
 
 function App() {
+  const [loaded, setLoaded] = useState(false);
+
+  const handleLoaded = useCallback(() => {
+    setLoaded(true);
+  }, []);
+
   return (
     <>
-      <Navbar />
-      <Hero />
-      <About />
-      <Chairman />
-      <Companies />
-      <Clients />
-      <Contact />
-      <Footer />
+      <PageLoader onComplete={handleLoaded} />
+      <CustomCursor />
+      <div style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s ease' }}>
+        <Navbar />
+        <Hero />
+        <MarqueeDivider
+          text="Building Excellence Across The Kingdom"
+          variant="crimson"
+        />
+        <About />
+        <StatsCounter />
+        <Chairman />
+        <Companies />
+        <MarqueeDivider
+          text={"Maestro \u2022 Saudi Blantex \u2022 Pronto \u2022 TSM Security"}
+          variant="light"
+          reverse
+        />
+        <Clients />
+        <Contact />
+        <Footer />
+      </div>
     </>
   );
 }

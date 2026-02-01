@@ -1,0 +1,79 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+}
+
+.curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: var(--color-ivory);
+}
+
+.curtainLeft {
+  left: 0;
+}
+
+.curtainRight {
+  right: 0;
+}
+
+.center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.accentLine {
+  width: 64px;
+  height: 2px;
+  background: var(--color-crimson);
+  transform-origin: center;
+  margin-bottom: 8px;
+  box-shadow: 0 0 30px rgba(200, 16, 46, 0.3);
+}
+
+.brandMark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.brandText {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 52px;
+  color: var(--color-black);
+  letter-spacing: 0.15em;
+  line-height: 1;
+}
+
+.brandSub {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: var(--color-gold);
+  padding-left: 0.5em;
+}
+
+.yearMark {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-ash);
+  margin-top: 8px;
+}

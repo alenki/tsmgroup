@@ -4,22 +4,32 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  background: var(--color-white);
 }
 
 /* ── Background layers ── */
 .bgBase {
   position: absolute;
-  inset: 0;
+  inset: -20px;
   background:
-    radial-gradient(ellipse 60% 50% at 15% 50%, rgba(200, 16, 46, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 15% 50%, rgba(200, 16, 46, 0.04) 0%, transparent 60%),
     radial-gradient(ellipse 40% 60% at 80% 20%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
-    linear-gradient(155deg, #080808 0%, #151515 30%, #111111 60%, #0a0a0a 100%);
+    linear-gradient(155deg, #FEFEFE 0%, #F8F6F3 30%, #FAF8F5 60%, #FEFEFE 100%);
+  will-change: transform;
+  transition: transform 0.15s ease-out;
+}
+
+.bgPattern {
+  position: absolute;
+  inset: -20px;
+  will-change: transform;
+  transition: transform 0.15s ease-out;
 }
 
 .bgVignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 30%, rgba(0, 0, 0, 0.5) 100%);
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 40%, rgba(245, 243, 240, 0.5) 100%);
 }
 
 .bgSpotlight {
@@ -27,7 +37,7 @@
   inset: 0;
   background: radial-gradient(
     ellipse 35% 50% at 65% 40%,
-    rgba(254, 254, 254, 0.02) 0%,
+    rgba(200, 16, 46, 0.015) 0%,
     transparent 70%
   );
 }
@@ -39,10 +49,12 @@
   top: 18%;
   width: 420px;
   height: 420px;
-  border: 1px solid rgba(200, 16, 46, 0.08);
+  border: 1px solid rgba(200, 16, 46, 0.06);
   border-radius: 50%;
   pointer-events: none;
   animation: ringPulse 8s ease-in-out infinite;
+  will-change: transform;
+  transition: transform 0.2s ease-out;
 }
 
 .floatingRing::after {
@@ -59,7 +71,7 @@
   top: 8%;
   width: 1px;
   height: 240px;
-  background: linear-gradient(to bottom, transparent, rgba(200, 16, 46, 0.12), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(200, 16, 46, 0.1), transparent);
   transform-origin: top;
   pointer-events: none;
 }
@@ -73,7 +85,19 @@
   background: var(--color-crimson);
   border-radius: 50%;
   pointer-events: none;
-  box-shadow: 0 0 20px rgba(200, 16, 46, 0.4);
+  box-shadow: 0 0 20px rgba(200, 16, 46, 0.25);
+}
+
+/* Horizontal accent line across the hero */
+.horizLine {
+  position: absolute;
+  bottom: 30%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200, 16, 46, 0.05) 20%, rgba(200, 16, 46, 0.05) 80%, transparent);
+  transform-origin: left;
+  pointer-events: none;
 }
 
 @keyframes ringPulse {
@@ -96,6 +120,7 @@
 
 .contentLeft {
   max-width: 720px;
+  perspective: 800px;
 }
 
 /* ── Established badge ── */
@@ -126,19 +151,22 @@
   font-family: var(--font-display);
   font-size: clamp(42px, 6.5vw, 96px);
   line-height: 1.05;
-  color: var(--color-white);
+  color: var(--color-black);
   letter-spacing: -0.025em;
+  perspective: 600px;
 }
 
 .taglineLight {
+  display: inline;
   font-weight: 400;
-  color: rgba(254, 254, 254, 0.7);
+  color: var(--color-slate);
 }
 
 .taglineBold {
+  display: inline;
   font-weight: 900;
   font-style: italic;
-  color: var(--color-white);
+  color: var(--color-crimson);
 }
 
 /* ── Red rule ── */
@@ -149,7 +177,7 @@
   background: var(--color-crimson);
   margin-top: 40px;
   transform-origin: left;
-  box-shadow: 0 0 20px rgba(200, 16, 46, 0.3);
+  box-shadow: 0 0 20px rgba(200, 16, 46, 0.15);
 }
 
 /* ── Subtext ── */
@@ -163,34 +191,73 @@
   color: var(--color-ash);
 }
 
-/* ── Right side year accent ── */
+/* ── Right side — Circular Text ── */
 .contentRight {
-  text-align: right;
-  padding-right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  transition: transform 0.2s ease-out;
 }
 
-.yearLarge {
-  display: block;
+/* ── Circular text element ── */
+.circularWrap {
+  position: relative;
+  width: clamp(260px, 22vw, 360px);
+  height: clamp(260px, 22vw, 360px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circularSpinner {
+  position: absolute;
+  inset: 0;
+  animation: circularSpin 25s linear infinite;
+}
+
+.circularSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.circularTextSvg {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  fill: var(--color-slate);
+  opacity: 0.4;
+}
+
+.circularCenter {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 16, 46, 0.12);
+  background: rgba(200, 16, 46, 0.03);
+}
+
+.circularYear {
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: clamp(100px, 16vw, 260px);
-  line-height: 0.85;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(200, 16, 46, 0.15);
+  font-size: 42px;
+  color: var(--color-crimson);
   letter-spacing: -0.04em;
+  line-height: 1;
+  opacity: 0.8;
 }
 
-.yearCaption {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--color-ash);
-  margin-top: 16px;
-  text-align: right;
+@keyframes circularSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ── Brand corner ── */
@@ -210,7 +277,7 @@
 .logoImg {
   height: 40px;
   width: auto;
-  opacity: 0.6;
+  opacity: 0.4;
   display: block;
   object-fit: contain;
 }
@@ -272,7 +339,8 @@
 
   .floatingRing,
   .floatingLine,
-  .floatingDot {
+  .floatingDot,
+  .horizLine {
     display: none;
   }
 

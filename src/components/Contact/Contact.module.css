@@ -13,7 +13,7 @@
   right: -200px;
   width: 700px;
   height: 700px;
-  border: 1px solid var(--color-pearl);
+  border: 1px solid rgba(200, 16, 46, 0.04);
   border-radius: 50%;
   opacity: 0.4;
   pointer-events: none;
@@ -26,7 +26,7 @@
   right: -150px;
   width: 580px;
   height: 580px;
-  border: 1px solid rgba(200, 16, 46, 0.06);
+  border: 1px solid rgba(201, 168, 76, 0.04);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -88,14 +88,14 @@
   font-family: var(--font-ui);
   font-size: 15px;
   font-weight: 500;
-  color: var(--color-black);
+  color: var(--color-slate);
   letter-spacing: 0.01em;
 }
 
 .decorGeometry {
   width: 100px;
   height: 100px;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 /* ── Form column ── */
@@ -103,8 +103,8 @@
   background: var(--color-white);
   padding: 48px 44px;
   border-radius: 6px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--color-pearl);
   max-width: 680px;
 }
 
@@ -131,7 +131,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--color-slate);
+  color: var(--color-ash);
   margin-bottom: 10px;
 }
 
@@ -207,7 +207,7 @@
 }
 
 .submitBtn:disabled {
-  background: var(--color-ash);
+  background: var(--color-silver);
   cursor: default;
 }
 
