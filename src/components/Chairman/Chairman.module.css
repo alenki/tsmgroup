@@ -1,6 +1,6 @@
 .section {
   padding: var(--section-py) 0;
-  background: var(--color-ivory);
+  background: var(--color-white);
   position: relative;
   overflow: hidden;
 }

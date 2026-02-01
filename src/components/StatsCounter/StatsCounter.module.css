@@ -1,6 +1,6 @@
 .section {
   padding: clamp(48px, 6vw, 80px) 0;
-  background: var(--color-ivory);
+  background: var(--color-white);
   position: relative;
   overflow: hidden;
   border-top: 1px solid var(--color-pearl);

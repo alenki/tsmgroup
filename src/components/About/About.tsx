@@ -84,7 +84,7 @@ export function About() {
           <div className={styles.cardsCol}>
             {siteContent.about.activities.map((activity, i) => (
               <RevealOnScroll key={activity.icon} delay={0.15 + i * 0.12} direction={i % 2 === 0 ? 'right' : 'up'}>
-                <div className={`${styles.card} ${i === 0 ? styles.cardFeatured : ''}`}>
+                <div className={styles.card}>
                   <div className={styles.cardNumber}>0{i + 1}</div>
                   <div className={styles.cardIcon}>
                     {ICONS[activity.icon]}
