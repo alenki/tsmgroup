@@ -13,6 +13,7 @@ import { Companies } from './components/Companies/Companies';
 import { Clients } from './components/Clients/Clients';
 import { Contact } from './components/Contact/Contact';
 import { Footer } from './components/Footer/Footer';
+import { BackToTop } from './components/BackToTop/BackToTop';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -56,6 +57,7 @@ function App() {
         <Clients />
         <Contact />
         <Footer />
+        <BackToTop />
       </div>
     </LenisContext.Provider>
   );
