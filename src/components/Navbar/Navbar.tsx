@@ -31,30 +31,7 @@ export function Navbar() {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="Scroll to top"
         >
-          <svg viewBox="0 0 200 50" className={styles.logoSvg}>
-            <text
-              x="4"
-              y="40"
-              fontFamily="Arial Black, sans-serif"
-              fontWeight="900"
-              fontSize="46"
-              fill={scrolled ? '#C8102E' : '#FEFEFE'}
-              letterSpacing="-1"
-            >
-              TSM
-            </text>
-            <text
-              x="118"
-              y="38"
-              fontFamily="Outfit, sans-serif"
-              fontWeight="300"
-              fontSize="13"
-              fill={scrolled ? '#7A7A7A' : '#B8B8B8'}
-              letterSpacing="4"
-            >
-              GROUP
-            </text>
-          </svg>
+          <img src="/logo.png" alt="TSM Group" className={styles.logoImg} />
         </button>
 
         <div className={styles.desktopLinks}>

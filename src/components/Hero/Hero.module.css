@@ -207,6 +207,14 @@
   opacity: 0.6;
 }
 
+.logoImg {
+  height: 40px;
+  width: auto;
+  opacity: 0.6;
+  display: block;
+  object-fit: contain;
+}
+
 /* ── Scroll hint ── */
 .scrollHint {
   position: absolute;

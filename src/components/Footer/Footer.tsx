@@ -6,10 +6,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.top}>
-          <svg viewBox="0 0 190 44" className={styles.logo}>
-            <text x="4" y="36" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="40" fill="#FEFEFE" letterSpacing="-1">TSM</text>
-            <text x="108" y="34" fontFamily="Outfit, sans-serif" fontWeight="300" fontSize="12" fill="#7A7A7A" letterSpacing="4">GROUP</text>
-          </svg>
+          <img src="/logo.png" alt="TSM Group" className={styles.logo} />
           <div className={styles.tagline}>Building Excellence Across The Kingdom</div>
         </div>
 

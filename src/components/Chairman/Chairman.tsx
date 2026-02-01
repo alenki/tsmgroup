@@ -12,13 +12,7 @@ export function Chairman() {
         {/* Portrait side — takes 45% */}
         <RevealOnScroll direction="left" className={styles.portraitSide}>
           <div className={styles.portraitWrap}>
-            {/* Placeholder portrait */}
-            <svg viewBox="0 0 460 620" className={styles.portraitSvg}>
-              <rect width="460" height="620" fill="#E2DDD6" />
-              <circle cx="230" cy="210" r="72" fill="#D0C9BF" />
-              <ellipse cx="230" cy="480" rx="110" ry="140" fill="#D0C9BF" />
-              <path d="M158 165 Q230 100 302 165 Q308 210 302 250 L230 270 158 250 Q152 210 158 165Z" fill="#C7BFB3" />
-            </svg>
+            <img src="/chairman.png" alt={siteContent.chairman.name} className={styles.portraitImg} />
 
             {/* Overlay caption on portrait */}
             <div className={styles.portraitOverlay}>

@@ -51,6 +51,14 @@
   border-radius: 4px;
 }
 
+.portraitImg {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  object-fit: cover;
+}
+
 .portraitOverlay {
   position: absolute;
   bottom: 0;

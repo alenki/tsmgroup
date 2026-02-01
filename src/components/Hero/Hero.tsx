@@ -96,10 +96,7 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.6 }}
       >
-        <svg viewBox="0 0 240 56" className={styles.logoSvg}>
-          <text x="0" y="46" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="54" fill="#FEFEFE" letterSpacing="-1">TSM</text>
-          <text x="138" y="44" fontFamily="Outfit, sans-serif" fontWeight="300" fontSize="15" fill="#B8B8B8" letterSpacing="5">GROUP</text>
-        </svg>
+        <img src="/logo.png" alt="TSM Group" className={styles.logoImg} />
       </motion.div>
 
       {/* Scroll indicator */}

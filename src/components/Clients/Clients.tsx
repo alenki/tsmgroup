@@ -3,34 +3,10 @@ import { SectionHeading } from '../shared/SectionHeading';
 import { clients } from '../../data/clients';
 import styles from './Clients.module.css';
 
-function LogoPlaceholder({ name }: { name: string }) {
-  const num = parseInt(name.replace('Client ', ''), 10);
-  const hue = (num * 37) % 360;
+function ClientLogo({ src }: { src: string }) {
   return (
     <div className={styles.logoPlaceholder}>
-      <svg viewBox="0 0 120 48" className={styles.logoSvg}>
-        <rect
-          x="4"
-          y="4"
-          width="112"
-          height="40"
-          rx="4"
-          fill={`hsl(${hue}, 12%, 88%)`}
-          stroke={`hsl(${hue}, 15%, 78%)`}
-          strokeWidth="1"
-        />
-        <text
-          x="60"
-          y="28"
-          textAnchor="middle"
-          fontFamily="Outfit, sans-serif"
-          fontSize="9"
-          fontWeight="500"
-          fill={`hsl(${hue}, 15%, 55%)`}
-        >
-          {name}
-        </text>
-      </svg>
+      <img src={src} alt="" className={styles.logoImg} />
     </div>
   );
 }
@@ -40,8 +16,8 @@ function MarqueeRow({ items, reverse }: { items: string[]; reverse?: boolean }) 
     <div className={`${styles.marqueeTrack} ${reverse ? styles.reverse : ''}`}>
       <div className={styles.marqueeInner}>
         {/* Duplicate for seamless loop */}
-        {[...items, ...items].map((client, i) => (
-          <LogoPlaceholder key={`${client}-${i}`} name={client} />
+        {[...items, ...items].map((src, i) => (
+          <ClientLogo key={`${src}-${i}`} src={src} />
         ))}
       </div>
     </div>

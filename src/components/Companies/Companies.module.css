@@ -136,6 +136,30 @@
   height: 100%;
 }
 
+/* Company logo */
+.cardLogo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.15;
+  transition: opacity var(--duration-normal) var(--ease-out-expo);
+}
+
+.card:hover .cardLogo {
+  opacity: 0.25;
+}
+
+.cardLogoImg {
+  height: 60px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
 /* Content */
 .cardContent {
   position: absolute;

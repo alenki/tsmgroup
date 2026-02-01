@@ -40,6 +40,13 @@
   width: auto;
 }
 
+.logoImg {
+  height: 36px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 /* Desktop links */
 .desktopLinks {
   display: flex;

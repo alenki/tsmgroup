@@ -64,6 +64,11 @@ export function Companies() {
                   </svg>
                 </div>
 
+                {/* Company logo */}
+                <div className={styles.cardLogo}>
+                  <img src={company.logo} alt={company.name} className={styles.cardLogoImg} />
+                </div>
+
                 {/* Content */}
                 <div className={styles.cardContent}>
                   <div className={styles.cardTop}>

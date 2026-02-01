@@ -54,20 +54,26 @@
 
 .logoPlaceholder {
   flex-shrink: 0;
-  filter: grayscale(1) opacity(0.5);
+  filter: grayscale(1);
+  opacity: 0.5;
   transition:
     filter var(--duration-normal) var(--ease-out-expo),
+    opacity var(--duration-normal) var(--ease-out-expo),
     transform var(--duration-normal) var(--ease-out-expo);
 }
 
 .logoPlaceholder:hover {
-  filter: grayscale(0) opacity(1);
+  filter: grayscale(0);
+  opacity: 1;
   transform: scale(1.08);
 }
 
-.logoSvg {
+.logoImg {
   height: 52px;
   width: auto;
+  display: block;
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 @keyframes marqueeScroll {
@@ -89,7 +95,7 @@
 }
 
 @media (max-width: 768px) {
-  .logoSvg {
+  .logoImg {
     height: 40px;
   }
 
