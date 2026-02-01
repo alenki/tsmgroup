@@ -20,8 +20,6 @@ export function Chairman() {
               <span className={styles.portraitRole}>TSM Group of Companies</span>
             </div>
 
-            {/* Corner accent */}
-            <div className={styles.cornerAccent} />
           </div>
         </RevealOnScroll>
 

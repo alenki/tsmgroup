@@ -10,7 +10,7 @@ interface Stat {
 }
 
 const STATS: Stat[] = [
-  { value: 27, suffix: '+', label: 'Years of Excellence' },
+  { value: 28, suffix: '+', label: 'Years of Excellence' },
   { value: 4, suffix: '', label: 'Leading Companies' },
   { value: 43, suffix: '+', label: 'Trusted Clients' },
   { value: 1997, suffix: '', label: 'Year Established' },

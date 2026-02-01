@@ -58,8 +58,7 @@ export function PageLoader({ onComplete }: { onComplete: () => void }) {
               }
               transition={{ duration: 0.6, delay: phase === 'loading' ? 0.3 : 0 }}
             >
-              <span className={styles.brandText}>TSM</span>
-              <span className={styles.brandSub}>Group</span>
+              <img src="/logo_2.png" alt="TSM Group" className={styles.brandLogo} />
             </motion.div>
             <motion.div
               className={styles.yearMark}
