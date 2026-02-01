@@ -78,8 +78,10 @@
   padding: 4px 0;
 }
 
-.footerLink:hover {
-  color: var(--color-crimson);
+@media (hover: hover) {
+  .footerLink:hover {
+    color: var(--color-crimson);
+  }
 }
 
 .dot {

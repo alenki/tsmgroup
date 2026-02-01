@@ -147,10 +147,12 @@
     transform var(--duration-normal) var(--ease-out-expo);
 }
 
-.card:hover {
-  border-color: var(--color-crimson);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--color-crimson);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
 }
 
 .cardFeatured {
@@ -189,8 +191,10 @@
   transition: transform var(--duration-normal) var(--ease-out-expo);
 }
 
-.card:hover .cardIcon {
-  transform: scale(1.08) rotate(-4deg);
+@media (hover: hover) {
+  .card:hover .cardIcon {
+    transform: scale(1.08) rotate(-4deg);
+  }
 }
 
 .cardTitle {
@@ -222,8 +226,10 @@
   transition: transform var(--duration-normal) var(--ease-out-expo);
 }
 
-.card:hover .cardEdge {
-  transform: scaleX(1);
+@media (hover: hover) {
+  .card:hover .cardEdge {
+    transform: scaleX(1);
+  }
 }
 
 /* ── Responsive ── */

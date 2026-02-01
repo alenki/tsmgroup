@@ -66,8 +66,10 @@
   transition: border-color var(--duration-normal) var(--ease-out-expo);
 }
 
-.card:hover {
-  border-color: rgba(0, 0, 0, 0.12);
+@media (hover: hover) {
+  .card:hover {
+    border-color: rgba(0, 0, 0, 0.12);
+  }
 }
 
 /* Large number */
@@ -87,8 +89,10 @@
   transition: -webkit-text-stroke var(--duration-slow) var(--ease-out-expo);
 }
 
-.card:hover .cardNum {
-  -webkit-text-stroke: 1px var(--card-accent, rgba(200, 16, 46, 0.2));
+@media (hover: hover) {
+  .card:hover .cardNum {
+    -webkit-text-stroke: 1px var(--card-accent, rgba(200, 16, 46, 0.2));
+  }
 }
 
 /* Background */
@@ -98,8 +102,10 @@
   transition: transform var(--duration-dramatic) var(--ease-out-expo);
 }
 
-.card:hover .cardBg {
-  transform: scale(1.06);
+@media (hover: hover) {
+  .card:hover .cardBg {
+    transform: scale(1.06);
+  }
 }
 
 .cardBgSvg {
@@ -153,8 +159,10 @@
   transition: width var(--duration-normal) var(--ease-out-expo);
 }
 
-.card:hover .cardDash {
-  width: 28px;
+@media (hover: hover) {
+  .card:hover .cardDash {
+    width: 28px;
+  }
 }
 
 .cardTagline {
@@ -199,13 +207,15 @@
   transition: transform var(--duration-normal) var(--ease-out-expo);
 }
 
-.card:hover .cardCta {
-  opacity: 1;
-  transform: translateY(0);
-}
+@media (hover: hover) {
+  .card:hover .cardCta {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-.card:hover .cardCta svg {
-  transform: translateX(4px);
+  .card:hover .cardCta svg {
+    transform: translateX(4px);
+  }
 }
 
 /* Bottom bar */
@@ -222,8 +232,10 @@
   transition: transform var(--duration-slow) var(--ease-out-expo);
 }
 
-.card:hover .cardBar {
-  transform: scaleX(1);
+@media (hover: hover) {
+  .card:hover .cardBar {
+    transform: scaleX(1);
+  }
 }
 
 /* ── Modal ── */
@@ -302,9 +314,11 @@
     background-color var(--duration-fast);
 }
 
-.modalClose:hover {
-  color: var(--color-crimson);
-  background: var(--color-ivory);
+@media (hover: hover) {
+  .modalClose:hover {
+    color: var(--color-crimson);
+    background: var(--color-ivory);
+  }
 }
 
 .modalClose svg {

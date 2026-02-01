@@ -76,8 +76,10 @@
   color: var(--color-slate);
 }
 
-.nav:not(.scrolled) .link:hover {
-  color: var(--color-crimson);
+@media (hover: hover) {
+  .nav:not(.scrolled) .link:hover {
+    color: var(--color-crimson);
+  }
 }
 
 .nav:not(.scrolled) .link.active {
@@ -88,8 +90,10 @@
   color: var(--color-slate);
 }
 
-.scrolled .link:hover {
-  color: var(--color-crimson);
+@media (hover: hover) {
+  .scrolled .link:hover {
+    color: var(--color-crimson);
+  }
 }
 
 .scrolled .link.active {
@@ -109,9 +113,14 @@
   transition: transform var(--duration-fast) var(--ease-out-expo);
 }
 
-.link:hover::after,
 .link.active::after {
   transform: scaleX(1);
+}
+
+@media (hover: hover) {
+  .link:hover::after {
+    transform: scaleX(1);
+  }
 }
 
 .langDivider {
@@ -235,13 +244,15 @@
   transition: color var(--duration-fast);
 }
 
-.mobileLink:hover {
-  color: var(--color-crimson);
-  border-bottom-color: rgba(200, 16, 46, 0.3);
-}
+@media (hover: hover) {
+  .mobileLink:hover {
+    color: var(--color-crimson);
+    border-bottom-color: rgba(200, 16, 46, 0.3);
+  }
 
-.mobileLink:hover::before {
-  color: var(--color-crimson);
+  .mobileLink:hover::before {
+    color: var(--color-crimson);
+  }
 }
 
 .mobileMenuOpen .mobileLink {
@@ -277,8 +288,10 @@
   display: none;
 }
 
-.mobileLang .mobileLink:hover {
-  color: var(--color-slate);
+@media (hover: hover) {
+  .mobileLang .mobileLink:hover {
+    color: var(--color-slate);
+  }
 }
 
 @media (max-width: 1024px) {

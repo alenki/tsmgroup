@@ -196,10 +196,12 @@
   pointer-events: none;
 }
 
-.submitBtn:hover:not(:disabled) {
-  background: var(--color-crimson-dark);
-  box-shadow: var(--shadow-crimson);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .submitBtn:hover:not(:disabled) {
+    background: var(--color-crimson-dark);
+    box-shadow: var(--shadow-crimson);
+    transform: translateY(-2px);
+  }
 }
 
 .submitBtn:active:not(:disabled) {

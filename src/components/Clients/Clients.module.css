@@ -36,8 +36,10 @@
   );
 }
 
-.marqueeTrack:hover .marqueeInner {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .marqueeTrack:hover .marqueeInner {
+    animation-play-state: paused;
+  }
 }
 
 .marqueeInner {
@@ -69,10 +71,12 @@
     transform var(--duration-normal) var(--ease-out-expo);
 }
 
-.logoPlaceholder:hover {
-  filter: grayscale(0);
-  opacity: 1;
-  transform: scale(1.08);
+@media (hover: hover) {
+  .logoPlaceholder:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: scale(1.08);
+  }
 }
 
 .logoImg {
