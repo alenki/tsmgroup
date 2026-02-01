@@ -14,7 +14,7 @@ export const companies: Company[] = [
     tagline: 'Event Orchestration',
     description:
       'Maestro Event specializes in comprehensive event and exhibition management, delivering world-class experiences for corporate and public events across the Kingdom of Saudi Arabia.',
-    color: '#E84393',
+    color: '#2D7DD2',
     logo: '/maestro.png',
   },
   {
@@ -41,7 +41,7 @@ export const companies: Company[] = [
     tagline: 'Cybersecurity Solutions',
     description:
       'TSM Security provides comprehensive cybersecurity and digital protection solutions, safeguarding businesses and institutions across the Kingdom with cutting-edge technology.',
-    color: '#0984E3',
+    color: '#C8102E',
     logo: '/tsmsecurity.png',
   },
 ];
