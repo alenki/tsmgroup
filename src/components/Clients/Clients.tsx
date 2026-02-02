@@ -9,7 +9,7 @@ import styles from './Clients.module.css';
 function ClientLogo({ src }: { src: string }) {
   return (
     <div className={styles.logoPlaceholder}>
-      <img src={src} alt="" loading="lazy" className={styles.logoImg} />
+      <img src={src} alt="" className={styles.logoImg} />
     </div>
   );
 }
