@@ -226,10 +226,12 @@
 
   .portraitWrap {
     margin-right: 0;
+    margin-left: 0;
   }
 
   .messageSide {
     padding-left: 0;
+    padding-right: 0;
     max-width: 100%;
   }
 
@@ -241,6 +243,20 @@
     font-size: 160px;
     top: -40px;
     left: -16px;
+  }
+
+  :global([dir="rtl"]) .portraitWrap {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  :global([dir="rtl"]) .messageSide {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  :global([dir="rtl"]) .quoteDecor {
+    right: -16px;
   }
 }
 
