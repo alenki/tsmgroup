@@ -20,6 +20,7 @@
 .marqueeTrack {
   width: 100%;
   overflow: hidden;
+  direction: ltr;
   mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -44,7 +45,6 @@
 
 .marqueeInner {
   display: flex;
-  direction: ltr;
   gap: 48px;
   width: max-content;
   will-change: transform;
