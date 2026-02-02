@@ -44,6 +44,7 @@
 
 .marqueeInner {
   display: flex;
+  direction: ltr;
   gap: 48px;
   width: max-content;
   will-change: transform;
