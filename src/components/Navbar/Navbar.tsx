@@ -23,16 +23,13 @@ export function Navbar() {
     if (mobileOpen && !closing) {
       lenis?.stop();
       document.body.style.overflow = 'hidden';
-      document.documentElement.style.background = 'var(--color-white)';
     } else if (!mobileOpen && !closing) {
       lenis?.start();
       document.body.style.overflow = '';
-      document.documentElement.style.background = '';
     }
     return () => {
       lenis?.start();
       document.body.style.overflow = '';
-      document.documentElement.style.background = '';
     };
   }, [mobileOpen, closing, lenis]);
 
