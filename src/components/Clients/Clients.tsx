@@ -1,6 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import { RevealOnScroll } from '../shared/RevealOnScroll';
 import { SectionHeading } from '../shared/SectionHeading';
+import { useLanguage } from '../../context/LanguageContext';
+import { t } from '../../data/translations';
 import { clients } from '../../data/clients';
 import styles from './Clients.module.css';
 
@@ -47,6 +49,8 @@ function MarqueeRow({ items, reverse }: { items: string[]; reverse?: boolean }) 
 }
 
 export function Clients() {
+  const { lang } = useLanguage();
+  const tr = t(lang);
   const half = Math.ceil(clients.length / 2);
   const row1 = clients.slice(0, half);
   const row2 = clients.slice(half);
@@ -55,7 +59,7 @@ export function Clients() {
     <section id="clients" className={styles.section}>
       <div className={styles.container}>
         <RevealOnScroll>
-          <SectionHeading topText="Our" bottomText="Clients" centered />
+          <SectionHeading topText={tr.clients.headingTop} bottomText={tr.clients.headingBottom} centered />
         </RevealOnScroll>
       </div>
 

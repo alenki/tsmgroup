@@ -1,20 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { useInView } from '../../hooks/useInView';
+import { useLanguage } from '../../context/LanguageContext';
+import { t } from '../../data/translations';
 import styles from './StatsCounter.module.css';
-
-interface Stat {
-  value: number;
-  suffix: string;
-  label: string;
-}
-
-const STATS: Stat[] = [
-  { value: 28, suffix: '+', label: 'Years of Excellence' },
-  { value: 4, suffix: '', label: 'Leading Companies' },
-  { value: 43, suffix: '+', label: 'Trusted Clients' },
-  { value: 1997, suffix: '', label: 'Year Established' },
-];
 
 function AnimatedNumber({ value, suffix, inView }: { value: number; suffix: string; inView: boolean }) {
   const [display, setDisplay] = useState(0);
@@ -50,13 +39,15 @@ function AnimatedNumber({ value, suffix, inView }: { value: number; suffix: stri
 
 export function StatsCounter() {
   const [ref, inView] = useInView(0.3);
+  const { lang } = useLanguage();
+  const stats = t(lang).stats;
 
   return (
     <section className={styles.section} ref={ref}>
       <div className={styles.container}>
-        {STATS.map((stat, i) => (
+        {stats.map((stat, i) => (
           <motion.div
-            key={stat.label}
+            key={`${lang}-${stat.label}`}
             className={styles.stat}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -68,7 +59,7 @@ export function StatsCounter() {
           >
             <AnimatedNumber value={stat.value} suffix={stat.suffix} inView={inView} />
             <span className={styles.label}>{stat.label}</span>
-            {i < STATS.length - 1 && <div className={styles.divider} />}
+            {i < stats.length - 1 && <div className={styles.divider} />}
           </motion.div>
         ))}
       </div>

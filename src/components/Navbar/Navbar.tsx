@@ -1,23 +1,27 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useLenis } from '../../context/LenisContext';
+import { useLanguage } from '../../context/LanguageContext';
+import { t } from '../../data/translations';
 import { useScrollSpy } from '../../hooks/useScrollSpy';
 import type { SectionId } from '../../hooks/useScrollSpy';
 import styles from './Navbar.module.css';
 
-const NAV_ITEMS: { id: SectionId; label: string }[] = [
-  { id: 'about', label: 'About' },
-  { id: 'chairman', label: "Chairman's Message" },
-  { id: 'companies', label: 'Companies' },
-  { id: 'clients', label: 'Clients' },
-  { id: 'contact', label: 'Contact Us' },
-];
-
 export function Navbar() {
   const lenis = useLenis();
+  const { lang, setLang } = useLanguage();
+  const tr = t(lang);
   const { activeSection, scrolled } = useScrollSpy();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const NAV_ITEMS: { id: SectionId; label: string }[] = [
+    { id: 'about', label: tr.nav.about },
+    { id: 'chairman', label: tr.nav.chairman },
+    { id: 'companies', label: tr.nav.companies },
+    { id: 'clients', label: tr.nav.clients },
+    { id: 'contact', label: tr.nav.contact },
+  ];
 
   useEffect(() => {
     if (mobileOpen && !closing) {
@@ -107,8 +111,18 @@ export function Navbar() {
             </button>
           ))}
           <span className={styles.langDivider}>|</span>
-          <button className={`${styles.link} ${styles.langLink}`}>EN</button>
-          <button className={`${styles.link} ${styles.langLink}`}>AR</button>
+          <button
+            className={`${styles.link} ${styles.langLink} ${lang === 'en' ? styles.langActive : ''}`}
+            onClick={() => setLang('en')}
+          >
+            EN
+          </button>
+          <button
+            className={`${styles.link} ${styles.langLink} ${lang === 'ar' ? styles.langActive : ''}`}
+            onClick={() => setLang('ar')}
+          >
+            AR
+          </button>
         </div>
 
         <button
@@ -146,8 +160,18 @@ export function Navbar() {
             </button>
           ))}
           <div className={styles.mobileLang}>
-            <button className={styles.mobileLink}>English</button>
-            <button className={styles.mobileLink}>عربي</button>
+            <button
+              className={`${styles.mobileLink} ${lang === 'en' ? styles.langActive : ''}`}
+              onClick={() => setLang('en')}
+            >
+              English
+            </button>
+            <button
+              className={`${styles.mobileLink} ${lang === 'ar' ? styles.langActive : ''}`}
+              onClick={() => setLang('ar')}
+            >
+              عربي
+            </button>
           </div>
         </div>
       </div>

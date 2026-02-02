@@ -3,12 +3,23 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { RevealOnScroll } from '../shared/RevealOnScroll';
 import { SectionHeading } from '../shared/SectionHeading';
-import { companies } from '../../data/companies';
-import type { Company } from '../../data/companies';
+import { useLanguage } from '../../context/LanguageContext';
+import { t } from '../../data/translations';
 import styles from './Companies.module.css';
 
+interface CompanyItem {
+  name: string;
+  slug: string;
+  tagline: string;
+  description: string;
+  color: string;
+  logo: string;
+}
+
 export function Companies() {
-  const [activeCompany, setActiveCompany] = useState<Company | null>(null);
+  const { lang } = useLanguage();
+  const tr = t(lang);
+  const [activeCompany, setActiveCompany] = useState<CompanyItem | null>(null);
 
   useEffect(() => {
     if (activeCompany) {
@@ -41,10 +52,9 @@ export function Companies() {
       <div className={styles.container}>
         <RevealOnScroll>
           <div className={styles.header}>
-            <SectionHeading topText="Our" bottomText="Companies" />
+            <SectionHeading topText={tr.companies.headingTop} bottomText={tr.companies.headingBottom} />
             <p className={styles.headerDesc}>
-              A diversified portfolio of companies serving industries across
-              the Kingdom of Saudi Arabia.
+              {tr.companies.description}
             </p>
           </div>
         </RevealOnScroll>
@@ -53,7 +63,7 @@ export function Companies() {
       {/* Cards grid */}
       <div className={styles.container}>
         <div className={styles.cardGrid}>
-          {companies.map((company, i) => (
+          {tr.companies.items.map((company, i) => (
             <RevealOnScroll key={company.slug} delay={0.1 + i * 0.12}>
               <button
                 className={styles.card}
@@ -99,7 +109,7 @@ export function Companies() {
                   </div>
                   <h3 className={styles.cardName}>{company.name}</h3>
                   <span className={styles.cardCta}>
-                    <span>Explore</span>
+                    <span>{tr.companies.explore}</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>

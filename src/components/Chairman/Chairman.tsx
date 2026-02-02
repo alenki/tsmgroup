@@ -1,23 +1,27 @@
 import { RevealOnScroll } from '../shared/RevealOnScroll';
-import { siteContent } from '../../data/content';
+import { useLanguage } from '../../context/LanguageContext';
+import { t } from '../../data/translations';
 import styles from './Chairman.module.css';
 
 export function Chairman() {
+  const { lang } = useLanguage();
+  const tr = t(lang);
+
   return (
     <section id="chairman" className={styles.section}>
       {/* Vertical text accent */}
-      <div className={styles.verticalLabel} aria-hidden="true">Chairman&apos;s Message</div>
+      <div className={styles.verticalLabel} aria-hidden="true">{tr.chairman.verticalLabel}</div>
 
       <div className={styles.layout}>
         {/* Portrait side — takes 45% */}
         <RevealOnScroll direction="left" className={styles.portraitSide}>
           <div className={styles.portraitWrap}>
-            <img src="/chairman.png" alt={siteContent.chairman.name} className={styles.portraitImg} />
+            <img src="/chairman.png" alt={tr.chairman.name} className={styles.portraitImg} />
 
             {/* Overlay caption on portrait */}
             <div className={styles.portraitOverlay}>
-              <span className={styles.portraitName}>{siteContent.chairman.name}</span>
-              <span className={styles.portraitRole}>TSM Group of Companies</span>
+              <span className={styles.portraitName}>{tr.chairman.name}</span>
+              <span className={styles.portraitRole}>{tr.chairman.role}</span>
             </div>
 
           </div>
@@ -27,10 +31,10 @@ export function Chairman() {
         <div className={styles.messageSide}>
           <RevealOnScroll>
             <div className={styles.headingBlock}>
-              <span className={styles.headingLabel}>A Message From</span>
+              <span className={styles.headingLabel}>{tr.chairman.labelAbove}</span>
               <h2 className={styles.heading}>
-                <span className={styles.headingTop}>The</span>
-                <span className={styles.headingBottom}>Chairman</span>
+                <span className={styles.headingTop}>{tr.chairman.headingTop}</span>
+                <span className={styles.headingBottom}>{tr.chairman.headingBottom}</span>
               </h2>
             </div>
           </RevealOnScroll>
@@ -41,12 +45,12 @@ export function Chairman() {
             {/* Pull quote */}
             <RevealOnScroll delay={0.1}>
               <blockquote className={styles.pullQuote}>
-                &ldquo;Eagle doesn&apos;t fold its wings and stop flying as long as there is a summit was not reached.&rdquo;
+                {tr.chairman.pullQuote}
               </blockquote>
             </RevealOnScroll>
 
-            {siteContent.chairman.paragraphs.map((p, i) => (
-              <RevealOnScroll key={i} delay={0.15 + i * 0.07}>
+            {tr.chairman.paragraphs.map((p, i) => (
+              <RevealOnScroll key={`${lang}-${i}`} delay={0.15 + i * 0.07}>
                 <p className={`${styles.paragraph} ${i === 0 ? styles.opening : ''}`}>
                   {p}
                 </p>

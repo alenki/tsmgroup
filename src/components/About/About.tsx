@@ -1,6 +1,7 @@
 import { RevealOnScroll } from '../shared/RevealOnScroll';
 import { SectionHeading } from '../shared/SectionHeading';
-import { siteContent } from '../../data/content';
+import { useLanguage } from '../../context/LanguageContext';
+import { t } from '../../data/translations';
 import styles from './About.module.css';
 
 const ICONS: Record<string, React.ReactNode> = {
@@ -39,6 +40,9 @@ const ICONS: Record<string, React.ReactNode> = {
 };
 
 export function About() {
+  const { lang } = useLanguage();
+  const tr = t(lang);
+
   return (
     <section id="about" className={styles.section}>
       {/* Large decorative number */}
@@ -50,10 +54,10 @@ export function About() {
         {/* Top: Heading spans full width asymmetrically */}
         <RevealOnScroll>
           <div className={styles.headingRow}>
-            <SectionHeading topText="About" bottomText="The Group" />
+            <SectionHeading topText={tr.about.headingTop} bottomText={tr.about.headingBottom} />
             <div className={styles.headingAccent}>
-              <span className={styles.accentLabel}>Leading Companies</span>
-              <span className={styles.accentNumber}>Since &apos;97</span>
+              <span className={styles.accentLabel}>{tr.about.accentLabel}</span>
+              <span className={styles.accentNumber}>{tr.about.accentNumber}</span>
             </div>
           </div>
         </RevealOnScroll>
@@ -61,8 +65,8 @@ export function About() {
         {/* Main content — text offset left, cards break right */}
         <div className={styles.grid}>
           <div className={styles.textCol}>
-            {siteContent.about.paragraphs.slice(0, 2).map((p, i) => (
-              <RevealOnScroll key={i} delay={0.1 + i * 0.08}>
+            {tr.about.paragraphs.slice(0, 2).map((p, i) => (
+              <RevealOnScroll key={`${lang}-${i}`} delay={0.1 + i * 0.08}>
                 <p className={styles.paragraph}>{p}</p>
               </RevealOnScroll>
             ))}
@@ -70,19 +74,19 @@ export function About() {
             <RevealOnScroll delay={0.25}>
               <div className={styles.dividerRow}>
                 <span className={styles.dividerLine} />
-                <span className={styles.dividerText}>Our Sectors</span>
+                <span className={styles.dividerText}>{tr.about.divider}</span>
               </div>
             </RevealOnScroll>
 
-            {siteContent.about.paragraphs.slice(2).map((p, i) => (
-              <RevealOnScroll key={i + 2} delay={0.3 + i * 0.08}>
+            {tr.about.paragraphs.slice(2).map((p, i) => (
+              <RevealOnScroll key={`${lang}-${i + 2}`} delay={0.3 + i * 0.08}>
                 <p className={`${styles.paragraph} ${styles.paragraphSmall}`}>{p}</p>
               </RevealOnScroll>
             ))}
           </div>
 
           <div className={styles.cardsCol}>
-            {siteContent.about.activities.map((activity, i) => (
+            {tr.about.activities.map((activity, i) => (
               <RevealOnScroll key={activity.icon} delay={0.15 + i * 0.12} direction={i % 2 === 0 ? 'right' : 'up'}>
                 <div className={styles.card}>
                   <div className={styles.cardNumber}>0{i + 1}</div>

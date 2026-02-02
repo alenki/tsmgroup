@@ -183,6 +183,33 @@
   color: var(--color-graphite);
 }
 
+/* ── RTL ── */
+:global([dir="rtl"]) .verticalLabel {
+  left: auto;
+  right: clamp(8px, 2vw, 24px);
+  transform: rotate(90deg) translateX(50%);
+  transform-origin: 100% 0;
+}
+
+:global([dir="rtl"]) .portraitWrap {
+  margin-right: 0;
+  margin-left: -40px;
+}
+
+:global([dir="rtl"]) .messageSide {
+  padding-left: clamp(24px, 3vw, 64px);
+  padding-right: clamp(48px, 5vw, 96px);
+}
+
+:global([dir="rtl"]) .quoteDecor {
+  left: auto;
+  right: -32px;
+}
+
+:global([dir="rtl"]) .headingLabel {
+  letter-spacing: 0.08em;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1700px) {
   .layout {

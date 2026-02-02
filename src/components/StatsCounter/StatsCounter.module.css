@@ -54,6 +54,22 @@
   background: linear-gradient(to bottom, transparent, var(--color-pearl), transparent);
 }
 
+/* ── RTL ── */
+:global([dir="rtl"]) .number {
+  font-family: 'Cairo', system-ui, sans-serif;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+:global([dir="rtl"]) .label {
+  letter-spacing: 0.06em;
+}
+
+:global([dir="rtl"]) .divider {
+  right: auto;
+  left: 0;
+}
+
 @media (max-width: 768px) {
   .container {
     grid-template-columns: repeat(2, 1fr);

@@ -25,7 +25,8 @@
       "Bash(dir:*)",
       "Bash(git -C /c/Users/omarh/OneDrive/Рабочий стол/PC/WORK/Web Development/tsmgroup log --all --oneline -- public/bg_element.png)",
       "Bash(cd:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "mcp__playwright__browser_snapshot"
     ]
   }
 }

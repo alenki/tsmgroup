@@ -148,6 +148,18 @@ ul, ol {
   background: var(--color-crimson-light);
 }
 
+/* ── RTL / Arabic ── */
+[dir="rtl"] {
+  --font-display: 'Cairo', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-ui: 'Cairo', 'Outfit', system-ui, sans-serif;
+  --font-body: 'Noto Naskh Arabic', 'Source Serif 4', Georgia, serif;
+}
+
+[dir="rtl"] body {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,

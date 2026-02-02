@@ -213,6 +213,19 @@
   cursor: default;
 }
 
+/* ── RTL ── */
+:global([dir="rtl"]) .label {
+  letter-spacing: 0.06em;
+}
+
+:global([dir="rtl"]) .infoLabel {
+  letter-spacing: 0.06em;
+}
+
+:global([dir="rtl"]) .submitBtn {
+  letter-spacing: 0.06em;
+}
+
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr;

@@ -332,6 +332,39 @@
   height: 20px;
 }
 
+/* ── RTL ── */
+:global([dir="rtl"]) .card {
+  text-align: right;
+}
+
+:global([dir="rtl"]) .cardNum {
+  left: auto;
+  right: 24px;
+}
+
+:global([dir="rtl"]) .cardBar {
+  transform-origin: right;
+}
+
+:global([dir="rtl"]) .headerDesc {
+  text-align: left;
+}
+
+:global([dir="rtl"]) .modalClose {
+  right: auto;
+  left: 20px;
+}
+
+:global([dir="rtl"]) .cardCta svg {
+  transform: scaleX(-1);
+}
+
+@media (hover: hover) {
+  :global([dir="rtl"]) .card:hover .cardCta svg {
+    transform: scaleX(-1) translateX(4px);
+  }
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .header {

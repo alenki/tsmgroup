@@ -1,7 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { GeometricPattern } from './GeometricPattern';
-import { siteContent } from '../../data/content';
+import { useLanguage } from '../../context/LanguageContext';
+import { t } from '../../data/translations';
 import styles from './Hero.module.css';
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -9,6 +10,8 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const { lang } = useLanguage();
+  const tr = t(lang);
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
@@ -72,18 +75,18 @@ export function Hero() {
       <div className={styles.container}>
         <motion.div
           className={styles.established}
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: lang === 'ar' ? 30 : -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease }}
         >
           <span className={styles.estLine} />
-          <span className={styles.estText}>Est. 1997</span>
+          <span className={styles.estText}>{tr.hero.established}</span>
         </motion.div>
 
         <h1 className={styles.tagline}>
-          {['Building', ' Excellence'].map((word, i) => (
+          {tr.hero.taglineLine1.map((word, i) => (
             <motion.span
-              key={i}
+              key={`${lang}-1-${i}`}
               className={i === 0 ? styles.taglineLight : styles.taglineBold}
               initial={{ opacity: 0, y: 70, rotateX: -35 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -97,9 +100,9 @@ export function Hero() {
             </motion.span>
           ))}
           <br />
-          {['Across The', ' Kingdom'].map((word, i) => (
+          {tr.hero.taglineLine2.map((word, i) => (
             <motion.span
-              key={i + 2}
+              key={`${lang}-2-${i}`}
               className={i === 0 ? styles.taglineLight : styles.taglineBold}
               initial={{ opacity: 0, y: 70, rotateX: -35 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -123,16 +126,16 @@ export function Hero() {
         >
           <div className={styles.bottomMeta}>
             <span className={styles.metaText}>
-              {siteContent.hero.location}
+              {tr.hero.location}
             </span>
             <span className={styles.metaDivider} />
             <span className={styles.metaText}>
-              Diversified Conglomerate
+              {tr.hero.meta}
             </span>
           </div>
 
           <button className={styles.ctaButton} onClick={handleContactClick}>
-            Get In Touch
+            {tr.hero.cta}
             <span className={styles.ctaArrow} />
           </button>
         </motion.div>
@@ -146,7 +149,7 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2.2, duration: 0.8 }}
       >
-        <span className={styles.scrollText}>Scroll</span>
+        <span className={styles.scrollText}>{tr.hero.scroll}</span>
         <span className={styles.scrollLine} />
       </motion.div>
 

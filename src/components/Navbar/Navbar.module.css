@@ -310,6 +310,33 @@
   }
 }
 
+/* ── RTL ── */
+:global([dir="rtl"]) .link {
+  letter-spacing: 0.04em;
+}
+
+:global([dir="rtl"]) .link::after {
+  left: 14px;
+  right: 14px;
+}
+
+:global([dir="rtl"]) .mobileLink {
+  text-align: right;
+}
+
+:global([dir="rtl"]) .mobileLink::before {
+  order: 2;
+}
+
+.langActive {
+  color: var(--color-crimson) !important;
+}
+
+:global([dir="rtl"]) .mobileLang .mobileLink:first-child {
+  border-right: none;
+  border-left: 1px solid var(--color-pearl);
+}
+
 @media (max-width: 1024px) {
   .desktopLinks {
     display: none;

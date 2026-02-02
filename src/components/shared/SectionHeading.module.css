@@ -42,3 +42,14 @@
   background: var(--color-gold);
   margin-top: 20px;
 }
+
+/* ── RTL ── */
+:global([dir="rtl"]) .top,
+:global([dir="rtl"]) .bottom {
+  font-family: 'Cairo', system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+:global([dir="rtl"]) .bottom {
+  font-style: normal;
+}

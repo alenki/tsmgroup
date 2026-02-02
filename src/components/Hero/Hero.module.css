@@ -428,6 +428,56 @@
 }
 
 /* ═══════════════════════════════════════════
+   RTL
+   ═══════════════════════════════════════════ */
+
+:global([dir="rtl"]) .tagline {
+  font-family: 'Cairo', system-ui, sans-serif;
+  letter-spacing: 0;
+  direction: rtl;
+}
+
+:global([dir="rtl"]) .taglineBold {
+  font-style: normal;
+  font-weight: 800;
+}
+
+:global([dir="rtl"]) .taglineLight {
+  font-weight: 400;
+}
+
+:global([dir="rtl"]) .bgElement {
+  left: auto;
+  right: 0;
+}
+
+:global([dir="rtl"]) .yearWatermark {
+  right: auto;
+  left: var(--container-px);
+}
+
+:global([dir="rtl"]) .scrollHint {
+  right: auto;
+  left: var(--container-px);
+}
+
+:global([dir="rtl"]) .ctaArrow {
+  transform: scaleX(-1);
+}
+
+:global([dir="rtl"]) .estText {
+  letter-spacing: 0.12em;
+}
+
+:global([dir="rtl"]) .metaText {
+  letter-spacing: 0.08em;
+}
+
+:global([dir="rtl"]) .ctaButton {
+  letter-spacing: 0.08em;
+}
+
+/* ═══════════════════════════════════════════
    Responsive
    ═══════════════════════════════════════════ */
 

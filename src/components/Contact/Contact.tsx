@@ -2,11 +2,14 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { RevealOnScroll } from '../shared/RevealOnScroll';
 import { SectionHeading } from '../shared/SectionHeading';
-import { siteContent } from '../../data/content';
+import { useLanguage } from '../../context/LanguageContext';
+import { t } from '../../data/translations';
 import styles from './Contact.module.css';
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const { lang } = useLanguage();
+  const tr = t(lang);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -21,7 +24,7 @@ export function Contact() {
           {/* Info column */}
           <div className={styles.infoCol}>
             <RevealOnScroll>
-              <SectionHeading topText="Contact" bottomText="Us" />
+              <SectionHeading topText={tr.contact.headingTop} bottomText={tr.contact.headingBottom} />
             </RevealOnScroll>
 
             <RevealOnScroll delay={0.1}>
@@ -31,8 +34,8 @@ export function Contact() {
                     <path d="M22 16.92V19.92a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z" />
                   </svg>
                   <div>
-                    <span className={styles.infoLabel}>Telephone</span>
-                    <span className={styles.infoValue}>{siteContent.contact.tel}</span>
+                    <span className={styles.infoLabel}>{tr.contact.telLabel}</span>
+                    <span className={styles.infoValue}>{tr.contact.tel}</span>
                   </div>
                 </div>
 
@@ -43,8 +46,8 @@ export function Contact() {
                     <rect x="6" y="14" width="12" height="8" />
                   </svg>
                   <div>
-                    <span className={styles.infoLabel}>Fax</span>
-                    <span className={styles.infoValue}>{siteContent.contact.fax}</span>
+                    <span className={styles.infoLabel}>{tr.contact.faxLabel}</span>
+                    <span className={styles.infoValue}>{tr.contact.fax}</span>
                   </div>
                 </div>
 
@@ -54,8 +57,8 @@ export function Contact() {
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                   <div>
-                    <span className={styles.infoLabel}>Address</span>
-                    <span className={styles.infoValue}>{siteContent.contact.address}</span>
+                    <span className={styles.infoLabel}>{tr.contact.addressLabel}</span>
+                    <span className={styles.infoValue}>{tr.contact.address}</span>
                   </div>
                 </div>
               </div>
@@ -86,36 +89,36 @@ export function Contact() {
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formGrid}>
                 <div className={styles.field}>
-                  <label className={styles.label} htmlFor="name">Full Name</label>
-                  <input className={styles.input} type="text" id="name" placeholder="Your name" required />
+                  <label className={styles.label} htmlFor="name">{tr.contact.formName}</label>
+                  <input className={styles.input} type="text" id="name" placeholder={tr.contact.formNamePlaceholder} required />
                 </div>
                 <div className={styles.field}>
-                  <label className={styles.label} htmlFor="email">Email</label>
-                  <input className={styles.input} type="email" id="email" placeholder="your@email.com" required />
+                  <label className={styles.label} htmlFor="email">{tr.contact.formEmail}</label>
+                  <input className={styles.input} type="email" id="email" placeholder={tr.contact.formEmailPlaceholder} required />
                 </div>
                 <div className={styles.field}>
-                  <label className={styles.label} htmlFor="phone">Phone</label>
-                  <input className={styles.input} type="tel" id="phone" placeholder="+966..." />
+                  <label className={styles.label} htmlFor="phone">{tr.contact.formPhone}</label>
+                  <input className={styles.input} type="tel" id="phone" placeholder={tr.contact.formPhonePlaceholder} />
                 </div>
                 <div className={styles.field}>
-                  <label className={styles.label} htmlFor="company">Company</label>
-                  <input className={styles.input} type="text" id="company" placeholder="Company name" />
+                  <label className={styles.label} htmlFor="company">{tr.contact.formCompany}</label>
+                  <input className={styles.input} type="text" id="company" placeholder={tr.contact.formCompanyPlaceholder} />
                 </div>
               </div>
 
               <div className={styles.field}>
-                <label className={styles.label} htmlFor="message">Message</label>
+                <label className={styles.label} htmlFor="message">{tr.contact.formMessage}</label>
                 <textarea
                   className={`${styles.input} ${styles.textarea}`}
                   id="message"
-                  placeholder="How can we help you?"
+                  placeholder={tr.contact.formMessagePlaceholder}
                   rows={5}
                   required
                 />
               </div>
 
               <button type="submit" className={styles.submitBtn} disabled={submitted}>
-                {submitted ? 'Message Sent' : 'Send Message'}
+                {submitted ? tr.contact.formSubmitted : tr.contact.formSubmit}
               </button>
             </form>
           </RevealOnScroll>

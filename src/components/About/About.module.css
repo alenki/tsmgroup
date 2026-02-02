@@ -232,6 +232,34 @@
   }
 }
 
+/* ── RTL ── */
+:global([dir="rtl"]) .bigNumber {
+  right: auto;
+  left: var(--container-px);
+}
+
+:global([dir="rtl"]) .headingAccent {
+  text-align: left;
+}
+
+:global([dir="rtl"]) .dividerLine {
+  background: linear-gradient(to left, var(--color-crimson), var(--color-pearl));
+}
+
+:global([dir="rtl"]) .cardNumber {
+  right: auto;
+  left: 14px;
+}
+
+:global([dir="rtl"]) .cardEdge {
+  transform-origin: right;
+}
+
+:global([dir="rtl"]) .accentLabel,
+:global([dir="rtl"]) .dividerText {
+  letter-spacing: 0.06em;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .grid {

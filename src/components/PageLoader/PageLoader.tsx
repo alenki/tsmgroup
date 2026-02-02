@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useLanguage } from '../../context/LanguageContext';
+import { t } from '../../data/translations';
 import styles from './PageLoader.module.css';
 
 const ease = [0.76, 0, 0.24, 1] as const;
 
 export function PageLoader({ onComplete }: { onComplete: () => void }) {
   const [phase, setPhase] = useState<'loading' | 'reveal' | 'done'>('loading');
+  const { lang } = useLanguage();
+  const tr = t(lang);
 
   useEffect(() => {
     // Brief loading phase, then reveal
@@ -70,7 +74,7 @@ export function PageLoader({ onComplete }: { onComplete: () => void }) {
               }
               transition={{ duration: 0.5, delay: phase === 'loading' ? 0.7 : 0 }}
             >
-              Est. 1997
+              {tr.loader.established}
             </motion.div>
           </div>
         </motion.div>
