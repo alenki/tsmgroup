@@ -191,7 +191,7 @@
   right: 0;
   bottom: 0;
   background: var(--color-white);
-  z-index: 999;
+  z-index: 10000;
   clip-path: inset(0 0 100% 0);
   pointer-events: none;
   transition: clip-path 0.6s var(--ease-out-expo);
@@ -217,7 +217,8 @@
   flex-direction: column;
   justify-content: flex-end;
   height: 100%;
-  padding: var(--nav-height) var(--container-px) 10vh;
+  padding: var(--nav-height) var(--container-px) calc(10vh + env(safe-area-inset-bottom, 0px));
+  padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
   counter-reset: menu-item;
 }
 
