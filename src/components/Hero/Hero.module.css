@@ -30,10 +30,11 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  height: 90%;
+  height: auto;
   width: auto;
   pointer-events: none;
   opacity: 0.15;
+  mix-blend-mode: multiply;
   z-index: 1;
 }
 
