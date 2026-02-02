@@ -51,7 +51,12 @@ export function Navbar() {
       }
     };
     el.addEventListener('transitionend', onEnd);
-    return () => el.removeEventListener('transitionend', onEnd);
+    // Fallback in case transitionend doesn't fire (unreliable for clip-path on some browsers)
+    const timeout = setTimeout(finishClose, 700);
+    return () => {
+      el.removeEventListener('transitionend', onEnd);
+      clearTimeout(timeout);
+    };
   }, [closing, finishClose]);
 
   const closeMobile = () => {
@@ -71,6 +76,9 @@ export function Navbar() {
 
   const handleClick = (id: string) => {
     closeMobile();
+    // Re-enable scrolling immediately so the scroll command isn't ignored
+    lenis?.start();
+    document.body.style.overflow = '';
     const el = document.getElementById(id);
     if (el) {
       lenis ? lenis.scrollTo(el) : el.scrollIntoView({ behavior: 'smooth' });
